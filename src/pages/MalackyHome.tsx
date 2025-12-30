@@ -249,60 +249,52 @@ const MalackyHome = () => {
         </div>
       </section>
 
-      <section className="bg-blue-50 rounded-lg p-8 text-center mb-16">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">
-          Proč si vybrat naši pobočku v Malackách?
+      {/* Contact Section */}
+      <section className="mb-16 py-12">
+        <h2 className="text-5xl font-bold text-black mb-12 font-inter">
+          Máš otázky?... neváhaj nás kontaktovať
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
-          <div>
-            <h3 className="font-semibold text-lg mb-2">✓ Zkušení instruktoři</h3>
-            <p className="text-gray-600">
-              Naši instruktoři mají mnohaleté zkušenosti a individuální přístup.
-            </p>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Left - Contact Form */}
+          <div className="bg-white rounded-3xl shadow-lg p-8">
+            <form className="space-y-4">
+              <input
+                type="text"
+                placeholder="meno a priezvisko"
+                className="w-full px-6 py-4 rounded-full bg-zvyky-blue text-white placeholder-white/80 focus:outline-none focus:ring-2 focus:ring-zvyky-blue/50"
+              />
+              <input
+                type="email"
+                placeholder="email"
+                className="w-full px-6 py-4 rounded-full bg-zvyky-blue text-white placeholder-white/80 focus:outline-none focus:ring-2 focus:ring-zvyky-blue/50"
+              />
+              <textarea
+                placeholder="správa..."
+                rows={6}
+                className="w-full px-6 py-4 rounded-3xl bg-zvyky-blue text-white placeholder-white/80 focus:outline-none focus:ring-2 focus:ring-zvyky-blue/50 resize-none"
+              ></textarea>
+            </form>
           </div>
-          <div>
-            <h3 className="font-semibold text-lg mb-2">✓ Moderní vozidla</h3>
-            <p className="text-gray-600">
-              Využíváme nejnovější modely vozidel s moderními bezpečnostními prvky.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-lg mb-2">✓ Flexibilní rozvrh</h3>
-            <p className="text-gray-600">
-              Přizpůsobíme se vašemu času a potřebám.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-lg mb-2">✓ Vysoká úspěšnost</h3>
-            <p className="text-gray-600">
-              Naši studenti mají vysokou úspěšnost u závěrečných zkoušek.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      {/* Location Info */}
-      <section className="bg-white rounded-lg p-8 shadow-md">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-          Kontaktní informace - Malacky
-        </h2>
-        <div className="space-y-4">
-          <div className="flex items-start space-x-3">
-            <svg className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-            </svg>
-            <div>
-              <p className="font-semibold">Adresa:</p>
-              <p className="text-gray-600">Kláštorné námestie 1161/7, 901 01 Malacky, Slovensko</p>
+          {/* Right - Contact Info */}
+          <div className="flex flex-col justify-center space-y-8">
+            <div className="flex items-center gap-4">
+              <div className="bg-white rounded-full p-4 shadow-md">
+                <svg className="w-8 h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span className="text-2xl font-semibold text-black">mail@gmail.com</span>
             </div>
-          </div>
-          <div className="flex items-start space-x-3">
-            <svg className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-            </svg>
-            <div>
-              <p className="font-semibold">Telefón:</p>
-              <p className="text-gray-600">+421 987 654 321</p>
+
+            <div className="flex items-center gap-4">
+              <div className="bg-white rounded-full p-4 shadow-md">
+                <svg className="w-8 h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <span className="text-2xl font-semibold text-black">+421 903 765 888</span>
             </div>
           </div>
         </div>

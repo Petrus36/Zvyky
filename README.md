@@ -53,3 +53,4 @@ src/
 - ✅ React Router pro navigaci
 - ✅ Globální layout s navigací a patičkou
 
+

@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navigation from './components/Navigation'
 import MalackyNavigation from './components/MalackyNavigation'
 import BratislavaNavigation from './components/BratislavaNavigation'
 import Footer from './components/Footer'

@@ -27,10 +27,10 @@ const BratislavaKontakt = () => {
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-black mb-2">Email</h3>
                   <a 
-                    href="mailto:zvykyautoskola@gmail.com" 
+                    href="mailto:zvykyba@gmail.com" 
                     className="text-zvyky-blue hover:text-teal-600 transition-colors text-lg font-semibold break-all"
                   >
-                    zvykyautoskola@gmail.com
+                    zvykyba@gmail.com
                   </a>
                 </div>
               </div>
@@ -45,24 +45,14 @@ const BratislavaKontakt = () => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-black mb-4">Telefónne čísla</h3>
+                  <h3 className="text-lg font-bold text-black mb-4">Telefónne číslo</h3>
                   <div className="space-y-3">
                     <div>
-                      <p className="text-sm text-gray-600 mb-1">Zdeno</p>
                       <a 
-                        href="tel:+421905748441" 
+                        href="tel:+421905556677" 
                         className="text-zvyky-blue hover:text-teal-600 transition-colors text-xl font-bold"
                       >
-                        0905 748 441
-                      </a>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-600 mb-1">Miška</p>
-                      <a 
-                        href="tel:+421918472651" 
-                        className="text-zvyky-blue hover:text-teal-600 transition-colors text-xl font-bold"
-                      >
-                        0918 472 651
+                        0905 55 66 77
                       </a>
                     </div>
                   </div>
@@ -82,8 +72,8 @@ const BratislavaKontakt = () => {
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-black mb-2">Adresa</h3>
                   <p className="text-gray-700 text-lg">
-                    Záhorácka 52/24<br />
-                    901 01 Malacky
+                    Záhradnícka 4882/46<br />
+                    821 08 Bratislava
                   </p>
                 </div>
               </div>
@@ -116,7 +106,7 @@ const BratislavaKontakt = () => {
               className="relative h-full min-h-[500px] cursor-pointer group"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.8!2d17.2326!3d48.4103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8e3a8e8e8e8f%3A0x0!2sZ%C3%A1hor%C3%A1cka%2052%2F24%2C%20901%2001%20Malacky!5e0!3m2!1sen!2ssk!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.5!2d17.1!3d48.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sZ%C3%A1hradn%C3%ADcka%204882%2F46%2C%20821%2008%20Bratislava%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
                 width="100%"
                 height="100%"
                 style={{ border: 0, pointerEvents: 'none' }}
@@ -141,13 +131,13 @@ const BratislavaKontakt = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="tel:+421905748441"
+              href="tel:+421905556677"
               className="bg-white text-zvyky-blue hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition-all text-lg shadow-lg hover:shadow-xl"
             >
               Zavolať teraz
             </a>
             <a 
-              href="mailto:zvykyautoskola@gmail.com"
+              href="mailto:zvykyba@gmail.com"
               className="bg-white/10 backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-zvyky-blue font-bold py-4 px-8 rounded-lg transition-all text-lg"
             >
               Napísať email
@@ -175,7 +165,7 @@ const BratislavaKontakt = () => {
               </svg>
             </button>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.8!2d17.2326!3d48.4103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8e3a8e8e8e8f%3A0x0!2sZ%C3%A1hor%C3%A1cka%2052%2F24%2C%20901%2001%20Malacky!5e0!3m2!1sen!2ssk!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.5!2d17.1!3d48.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sZ%C3%A1hradn%C3%ADcka%204882%2F46%2C%20821%2008%20Bratislava%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
               width="100%"
               height="100%"
               style={{ border: 0, borderRadius: '1rem' }}
@@ -191,4 +181,5 @@ const BratislavaKontakt = () => {
 }
 
 export default BratislavaKontakt
+
 

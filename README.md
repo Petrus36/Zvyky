@@ -54,3 +54,4 @@ src/
 - ✅ Globální layout s navigací a patičkou
 
 
+

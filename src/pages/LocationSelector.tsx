@@ -32,7 +32,7 @@ const LocationSelector = () => {
           >
             <div className="aspect-square bg-gray-200">
               <img 
-                src="/images/First page background.JPG" 
+                src="/images/H_i20_Š.JPG" 
                 alt="Bratislava"
                 className="w-full h-full object-cover"
               />
@@ -60,7 +60,7 @@ const LocationSelector = () => {
           >
             <div className="aspect-square bg-gray-200">
               <img 
-                src="/images/First page background.JPG" 
+                src="/images/H_i20_Č_M.JPG" 
                 alt="Malacky"
                 className="w-full h-full object-cover"
               />

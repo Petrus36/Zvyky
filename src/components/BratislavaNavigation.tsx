@@ -5,7 +5,7 @@ const BratislavaNavigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   return (
-    <nav className="relative">
+    <nav className="sticky top-0 z-50">
       <div 
         className="relative overflow-hidden"
         style={{
@@ -15,12 +15,12 @@ const BratislavaNavigation = () => {
         }}
       >
         {/* Overlay for better text visibility */}
-        <div className="absolute inset-0 bg-white bg-opacity-20"></div>
+        <div className="absolute inset-0 bg-white bg-opacity-20 backdrop-blur-sm"></div>
       
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/bratislava" className="flex items-center -ml-4 sm:-ml-6 md:-ml-8 lg:-ml-12">
+          <Link to="/" className="flex items-center -ml-4 sm:-ml-6 md:-ml-8 lg:-ml-12">
             <img 
               src="/images/zvyky_autoskola_TRUE_TRANSPARENT.webp" 
               alt="Zvyky Autoškola Logo" 
@@ -83,7 +83,7 @@ const BratislavaNavigation = () => {
       {/* Contact Button - Desktop */}
       <Link
         to="/bratislava/kontakt"
-        className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 bg-zvyky-blue hover:opacity-90 text-white uppercase font-semibold px-4 lg:px-6 py-2 rounded-lg transition-all font-albert mr-4 md:mr-8 lg:mr-12 z-20 text-sm lg:text-base"
+        className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 bg-zvyky-blue hover:opacity-90 text-white uppercase font-semibold px-4 lg:px-6 py-2 rounded-lg transition-all font-albert mr-4 md:mr-8 lg:mr-12 z-[60] text-sm lg:text-base"
       >
         KONTAKT
       </Link>
@@ -142,4 +142,5 @@ const BratislavaNavigation = () => {
 }
 
 export default BratislavaNavigation
+
 

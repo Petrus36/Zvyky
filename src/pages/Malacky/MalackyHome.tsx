@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MalackyHome = () => {
   const [isMapOpen, setIsMapOpen] = React.useState(false);
@@ -109,9 +110,12 @@ const MalackyHome = () => {
 
         {/* Všetky kurzy Button */}
         <div className="text-center">
-          <button className="bg-zvyky-blue hover:opacity-90 text-white px-12 py-3 rounded-lg transition-all font-semibold uppercase text-base font-albert">
+          <Link 
+            to="/malacky/kurzy"
+            className="inline-block bg-zvyky-blue hover:opacity-90 text-white px-12 py-3 rounded-lg transition-all font-semibold uppercase text-base font-albert"
+          >
             Všetky kurzy
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -119,12 +123,12 @@ const MalackyHome = () => {
       <section className="mb-8 md:mb-16 py-6 md:py-12">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-8 md:mb-12 font-inter">Na čom jazdíme</h2>
         
-        <div className="max-w-full lg:max-w-[1600px] mr-auto ml-0 sm:ml-6 md:ml-8 lg:ml-12">
+        <div className="max-w-full lg:max-w-[95%] xl:max-w-[98%] mr-auto ml-0 sm:ml-6 md:ml-8 lg:ml-12">
           <div className="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] group">
             {/* Background Image */}
             <img 
-              src="/images/banner1.JPG" 
-              alt="Tesla" 
+              src="/images/hiundaz_i20_Zvyka.JPG" 
+              alt="Hyundai i20" 
               className="w-full h-full object-cover"
             />
             
@@ -133,12 +137,12 @@ const MalackyHome = () => {
             
             {/* Content */}
             <div className="absolute inset-0 flex flex-col justify-end pb-16 sm:pb-20 md:pb-24 px-6 sm:px-8 md:px-12 lg:px-16">
-              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 md:mb-4 font-inter">Tesla</h3>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 md:mb-4 font-inter">Hyundai i20</h3>
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-white mb-2 md:mb-4 max-w-full sm:max-w-xl lg:max-w-2xl">
-                Moderný elektromobil pre budúcich vodičov
+              Spoľahlivé a praktické auto pre budúcich vodičov
               </p>
               <p className="text-xs sm:text-sm md:text-base text-white/90 max-w-full sm:max-w-2xl lg:max-w-3xl leading-relaxed">
-                Tesla prináša tichú, plynulú jazdu a najnovšie technológie, vďaka ktorým si žiaci jazdu rýchlo obľúbia. Pokročilé asistenčné systémy a priateľný interiér im pomáhajú ísť sa sústrediť na premávku a bezpečné návyky za volantom.
+              Hyundai i20 ponúka jednoduché ovládanie, dobrý výhľad a kompaktné rozmery, vďaka ktorým sa žiaci rýchlo naučia bezpečne jazdiť v meste aj mimo neho.
               </p>
             </div>
             
@@ -170,15 +174,15 @@ const MalackyHome = () => {
             <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
               <div className="flex flex-col items-center mb-6">
                 <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center mb-4">
-                  <span className="text-2xl font-bold text-gray-600">AP</span>
+                  <span className="text-2xl font-bold text-gray-600">SH</span>
                 </div>
-                <h3 className="font-bold text-lg mb-2">Andrej P.</h3>
+                <h3 className="font-bold text-lg mb-2">Simona Hrivnáková</h3>
                 <div className="flex gap-1 text-yellow-400">
                   <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed text-center">
-                Do autoškoly som išiel s veľkým stressom, ale instruktor bol taký príjemný, že som sa rýchlo upokojil. Teória bola prebraná jasne, veľa vecí dával na reálne príklady z ciest, takže som to ľahko pochopil. Na jazdách som si cítil istotu a pripravenosť, študijný materiál mi prípadal prehľadný.
+                Za mňa super prístup. Na začiatku som mala dosť stres a bála som sa, že budem robiť stále tie isté chyby, ale inštruktor to bral v kľude a všetko mi vysvetlil tak, aby som to fakt pochopila. Najviac mi pomohlo, že sme veľa trénovali reálne situácie v premávke, nielen "ideálne" trasy. Jazdy mi postupne dávali väčší zmysel a cítila som, že sa zlepšujem. Skúška bola potom už len o sústredení.
               </p>
             </div>
 
@@ -186,15 +190,15 @@ const MalackyHome = () => {
             <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
               <div className="flex flex-col items-center mb-6">
                 <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center mb-4">
-                  <span className="text-2xl font-bold text-gray-600">DV</span>
+                  <span className="text-2xl font-bold text-gray-600">PŠ</span>
                 </div>
-                <h3 className="font-bold text-lg mb-2">Denis V.</h3>
+                <h3 className="font-bold text-lg mb-2">Peter Šebo</h3>
                 <div className="flex gap-1 text-yellow-400">
-                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span className="text-gray-300">★</span>
                 </div>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed text-center">
-                Autoškola ma super pripúla s čonom - volky sa riešilo stresové na tesných dážach a jazda mi verme! Skúsenosť bola pozitívna, necítil som sa ako "len ďalší študent". Auto bolo v perfektnom stave, jazy mali hlavu a pätu, každá hodina mala svoj cieľ. Vrátka film sa rýchlým spôsobiť nové a hustej premenkou.
+                Autoškolu by som odporučil hlavne tým, čo chcú normálny prístup bez zbytočného tlačenia. Inštruktor bol vecný, keď som niečo pokazil, povedal čo presne zmeniť a hneď sme to opakovali, kým to nebolo OK. Páčilo sa mi, že sme riešili aj parkovanie a križovatky viackrát, nie len raz a hotovo. Auto bolo čisté a jazdilo sa na ňom dobre. Jediná vec je, že niekedy sa hodina posunula o pár minút, ale nič hrozné. Celkovo dobrá skúsenosť.
               </p>
             </div>
 
@@ -202,15 +206,15 @@ const MalackyHome = () => {
             <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
               <div className="flex flex-col items-center mb-6">
                 <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center mb-4">
-                  <span className="text-2xl font-bold text-gray-600">PŠ</span>
+                  <span className="text-2xl font-bold text-gray-600">MK</span>
                 </div>
-                <h3 className="font-bold text-lg mb-2">Peter Š.</h3>
+                <h3 className="font-bold text-lg mb-2">Marek Kováč</h3>
                 <div className="flex gap-1 text-yellow-400">
-                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span className="text-gray-300">★</span>
                 </div>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed text-center">
-                Na tejto autoškole sa mi páčila najmä úprimnosť a profesionálny prístup. Naučili sa mňa materiál, aj keď som spravila chybu, ale vždy som vysvätila. Čo sa dokázalo osvedčilo sa odporúčam každému, kto chce nielen správne vodičské a aj cítiť istotu za volantom.
+                Autoškolu hodnotím celkovo pozitívne. Inštruktor bol v pohode, vedel vysvetliť chyby normálne a bez zbytočného stresu. Jazdy mali zmysel - nebolo to len krúženie po meste, ale vždy sme riešili konkrétne veci (križovatky, parkovanie, rozjazdy do kopca). Auto bolo udržiavané a nič na ňom "nehrkotalo". Jediné mínus je, že niekedy bolo ťažšie dohodnúť termín jazdy, hlavne ku koncu, keď mali viac ľudí. Inak som spokojný a na skúške som sa cítil pripravený.
               </p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MalackyHome = () => {
+const BratislavaHome = () => {
   const [isMapOpen, setIsMapOpen] = React.useState(false);
 
   return (
@@ -21,13 +21,13 @@ const MalackyHome = () => {
             </h1>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
               <a 
-                href="/malacky/kurzy"
+                href="/bratislava/kurzy"
                 className="bg-zvyky-blue hover:opacity-90 text-white uppercase font-semibold px-6 sm:px-8 md:px-10 py-3 md:py-4 text-base sm:text-lg md:text-xl rounded-lg transition-all font-karla text-center"
               >
                 Kurzy
               </a>
               <a 
-                href="/malacky/prihlaska"
+                href="/bratislava/prihlaska"
                 className="bg-transparent border-2 border-white hover:bg-white hover:text-zvyky-blue text-white uppercase font-semibold px-6 sm:px-8 md:px-10 py-3 md:py-4 text-base sm:text-lg md:text-xl rounded-lg transition-all font-karla text-center"
               >
                 Online prihláška
@@ -44,61 +44,63 @@ const MalackyHome = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           {/* A1 Card */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
             <div className="h-64 bg-gray-300 overflow-hidden">
               <img 
-                src="/images/banner1.JPG" 
+                src="/images/A1_foto.JPG" 
                 alt="A1 Kurz" 
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="p-8">
-              <h3 className="text-4xl font-extrabold mb-3 font-inter">A1</h3>
+            <div className="p-8 flex flex-col flex-grow">
+              <h3 className="text-4xl font-extrabold mb-2 font-inter">A1</h3>
+              <h4 className="text-lg font-bold mb-3 font-inter">Motocykel s objemom do 125cm3 a výkonom do 11 kW</h4>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                Vodičský preukaz na ľahké motocykle do 125 cm³. 
-                Ideálne na bezpečné púšťanie motoriek a jazdu v meste.
+              Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
               </p>
-              <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert">
+              <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto">
                 Viac informácií
               </button>
             </div>
           </div>
 
           {/* B Card */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
             <div className="h-64 bg-gray-300 overflow-hidden">
               <img 
-                src="/images/banner1.JPG" 
+                src="/images/B_picture.JPG" 
                 alt="B Kurz" 
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="p-8">
-              <h3 className="text-4xl font-extrabold mb-3 font-inter">B</h3>
+            <div className="p-8 flex flex-col flex-grow">
+              <h3 className="text-4xl font-extrabold mb-2 font-inter">B</h3>
+              <h4 className="text-lg font-bold mb-3 font-inter">Osobné vozidlo do 3,5 t.</h4>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                Vodičský preukaz na osobné auto. Naučíte sa jazdiť v bežnej premávke, parkovať a zvládnuť základné situácie na cestách.
+              Cena nezahŕňa správny poplatok za skúšku (kolok 33€) a poplatok za kurz prvej pomoci
               </p>
-              <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert">
+              <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto">
                 Viac informácií
               </button>
             </div>
           </div>
 
           {/* A2 Card */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
             <div className="h-64 bg-gray-300 overflow-hidden">
               <img 
-                src="/images/banner1.JPG" 
+                src="/images/A2_photo.JPG" 
                 alt="A2 Kurz" 
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="p-8">
-              <h3 className="text-4xl font-extrabold mb-3 font-inter">A2</h3>
+            <div className="p-8 flex flex-col flex-grow">
+              <h3 className="text-4xl font-extrabold mb-2 font-inter">A2</h3>
+              <h4 className="text-lg font-bold mb-3 font-inter">Motocykel s výkonom do 35 kW</h4>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                Vodičský preukaz na výkonnejšie motocykle s obmedzeným výkonom. Ideálne riešenie na skúsenejších jazdcov.
+                Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
               </p>
-              <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert">
+              <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto">
                 Viac informácií
               </button>
             </div>
@@ -192,7 +194,7 @@ const MalackyHome = () => {
                 </div>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed text-center">
-                Autoškola ma super pripúla s čonom - volky sa riešilo stresové na tesných dážach a jazda mi verme! Skúsenosť bola pozitívna, necítil som sa ako "len ďalší študent". Auto bolo v perfektnom stave, jazy mali hlavu a pätu, každá hodina mala svoj cieľ. Vrátka film sa rýchlým spôsobiť nové a hustej premenkou.
+                Autoškola ma super pripúla s čonom - volky sa riešilo stresové na tesných dážach a jazda mi verme! Skúsenosť bola pozitívna, necítil som sa ako "len ďalší študent". Auto bolo v perfektnom stave, jazy mali hlavu a pätu, každá hodina mala svoj cieľ. Vrátka film sa rýchlym spôsobiť nové a hustej premenkou.
               </p>
             </div>
 
@@ -258,7 +260,7 @@ const MalackyHome = () => {
               <span className="text-xl md:text-2xl font-bold text-black flex-shrink-0">2.</span>
               <div>
                 <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Vstupe do budovy - sme v budove (popre, napr. schodenom vstupom / z ľavej 
+                  Vstpe do budovy - sme v budove (popre, napr. schodenom vstupom / z ľavej 
                   strany budovy. / popísat ako vstup)
                 </p>
               </div>
@@ -298,58 +300,6 @@ const MalackyHome = () => {
        </section>
       </div>
 
-      {/* Contact Section */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-16">
-      <section className="mb-8 md:mb-16 py-6 md:py-12">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-8 md:mb-12 font-inter">
-          Máš otázky?... neváhaj nás kontaktovať
-        </h2>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          {/* Left - Contact Form */}
-          <div className="bg-white rounded-2xl md:rounded-3xl shadow-lg p-6 md:p-8">
-            <form className="space-y-4">
-              <input
-                type="text"
-                placeholder="meno a priezvisko"
-                className="w-full px-6 py-4 rounded-full bg-zvyky-blue text-white placeholder-white/80 focus:outline-none focus:ring-2 focus:ring-zvyky-blue/50"
-              />
-              <input
-                type="email"
-                placeholder="email"
-                className="w-full px-6 py-4 rounded-full bg-zvyky-blue text-white placeholder-white/80 focus:outline-none focus:ring-2 focus:ring-zvyky-blue/50"
-              />
-              <textarea
-                placeholder="správa..."
-                rows={6}
-                className="w-full px-6 py-4 rounded-3xl bg-zvyky-blue text-white placeholder-white/80 focus:outline-none focus:ring-2 focus:ring-zvyky-blue/50 resize-none"
-              ></textarea>
-            </form>
-          </div>
-
-          {/* Right - Contact Info */}
-          <div className="flex flex-col justify-center space-y-6 md:space-y-8">
-            <div className="flex items-center gap-3 md:gap-4">
-              <div className="bg-white rounded-full p-3 md:p-4 shadow-md flex-shrink-0">
-                <svg className="w-6 h-6 md:w-8 md:h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <span className="text-base sm:text-lg md:text-2xl font-semibold text-black break-all">mail@gmail.com</span>
-            </div>
-
-            <div className="flex items-center gap-3 md:gap-4">
-              <div className="bg-white rounded-full p-3 md:p-4 shadow-md flex-shrink-0">
-                <svg className="w-6 h-6 md:w-8 md:h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              </div>
-              <span className="text-base sm:text-lg md:text-2xl font-semibold text-black">+421 903 765 888</span>
-            </div>
-          </div>
-        </div>
-      </section>
-      </div>
 
        {/* Map Popup Modal */}
        {isMapOpen && (
@@ -379,11 +329,12 @@ const MalackyHome = () => {
                referrerPolicy="no-referrer-when-downgrade"
              ></iframe>
            </div>
+           
          </div>
+         
        )}
     </div>
   )
 }
 
-export default MalackyHome
-
+export default BratislavaHome

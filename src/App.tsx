@@ -1,10 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import MalackyNavigation from './components/MalackyNavigation'
+import BratislavaNavigation from './components/BratislavaNavigation'
 import Footer from './components/Footer'
 import LocationSelector from './pages/LocationSelector'
-import BratislavaHome from './pages/BratislavaHome'
-import MalackyHome from './pages/MalackyHome'
+import BratislavaHome from './pages/Bratislava/BratislavaHome'
+import BratislavaKurzy from './pages/Bratislava/BratislavaKurzy'
+import BratislavaVozidla from './pages/Bratislava/BratislavaVozidla'
+import BratislavaDokumenty from './pages/Bratislava/BratislavaDokumenty'
+import BratislavaKontakt from './pages/Bratislava/BratislavaKontakt'
+import MalackyHome from './pages/Malacky/MalackyHome'
+import MalackyKurzy from './pages/Malacky/MalackyKurzy'
+import MalackyVozidla from './pages/Malacky/MalackyVozidla'
+import MalackyDokumenty from './pages/Malacky/MalackyDokumenty'
+import MalackyKontakt from './pages/Malacky/MalackyKontakt'
 
 function App() {
   return (
@@ -13,10 +22,10 @@ function App() {
         {/* Location Selector - No Nav/Footer */}
         <Route path="/" element={<LocationSelector />} />
         
-        {/* Bratislava Route with Navigation and Footer */}
+        {/* Bratislava Routes with BratislavaNavigation and Footer */}
         <Route path="/bratislava" element={
           <div className="min-h-screen flex flex-col">
-            <Navigation />
+            <BratislavaNavigation />
             <main className="flex-grow">
               <BratislavaHome />
             </main>
@@ -24,12 +33,92 @@ function App() {
           </div>
         } />
         
-        {/* Malacky Route with Navigation and Footer */}
+        <Route path="/bratislava/kurzy" element={
+          <div className="min-h-screen flex flex-col">
+            <BratislavaNavigation />
+            <main className="flex-grow">
+              <BratislavaKurzy />
+            </main>
+            <Footer />
+          </div>
+        } />
+
+        <Route path="/bratislava/vozidla" element={
+          <div className="min-h-screen flex flex-col">
+            <BratislavaNavigation />
+            <main className="flex-grow">
+              <BratislavaVozidla />
+            </main>
+            <Footer />
+          </div>
+        } />
+
+        <Route path="/bratislava/dokumenty" element={
+          <div className="min-h-screen flex flex-col">
+            <BratislavaNavigation />
+            <main className="flex-grow">
+              <BratislavaDokumenty />
+            </main>
+            <Footer />
+          </div>
+        } />
+
+        <Route path="/bratislava/kontakt" element={
+          <div className="min-h-screen flex flex-col">
+            <BratislavaNavigation />
+            <main className="flex-grow">
+              <BratislavaKontakt />
+            </main>
+            <Footer />
+          </div>
+        } />
+        
+        {/* Malacky Routes with MalackyNavigation and Footer */}
         <Route path="/malacky" element={
           <div className="min-h-screen flex flex-col">
             <MalackyNavigation />
             <main className="flex-grow">
               <MalackyHome />
+            </main>
+            <Footer />
+          </div>
+        } />
+        
+        <Route path="/malacky/kurzy" element={
+          <div className="min-h-screen flex flex-col">
+            <MalackyNavigation />
+            <main className="flex-grow">
+              <MalackyKurzy />
+            </main>
+            <Footer />
+          </div>
+        } />
+        
+        <Route path="/malacky/vozidla" element={
+          <div className="min-h-screen flex flex-col">
+            <MalackyNavigation />
+            <main className="flex-grow">
+              <MalackyVozidla />
+            </main>
+            <Footer />
+          </div>
+        } />
+        
+        <Route path="/malacky/dokumenty" element={
+          <div className="min-h-screen flex flex-col">
+            <MalackyNavigation />
+            <main className="flex-grow">
+              <MalackyDokumenty />
+            </main>
+            <Footer />
+          </div>
+        } />
+        
+        <Route path="/malacky/kontakt" element={
+          <div className="min-h-screen flex flex-col">
+            <MalackyNavigation />
+            <main className="flex-grow">
+              <MalackyKontakt />
             </main>
             <Footer />
           </div>

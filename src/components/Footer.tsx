@@ -1,49 +1,85 @@
+import { Link } from 'react-router-dom'
+
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white mt-auto">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          <div>
-            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Autoškola</h3>
-            <p className="text-sm md:text-base text-gray-400">
-              Vaše spolehlivá volba pro získání řidičského oprávnění.
-            </p>
+    <footer className="text-white mt-auto font-inter" style={{ backgroundColor: '#116584' }}>
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          {/* Logo */}
+          <div className="flex items-start">
+            <img 
+              src="/images/logo_footer.JPG" 
+              alt="Zvyky Logo" 
+              className="h-16 md:h-20 lg:h-24"
+            />
           </div>
+
+          {/* Rýchle odkazy */}
           <div>
-            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Rychlé odkazy</h3>
-            <ul className="space-y-2 text-sm md:text-base text-gray-400">
+            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Rýchle odkazy:</h3>
+            <ul className="space-y-2 text-sm md:text-base">
               <li>
-                <a href="/" className="hover:text-white transition-colors">
-                  Domů
-                </a>
+                <Link to="/malacky" className="hover:text-white/80 transition-colors">
+                  Domov
+                </Link>
               </li>
               <li>
-                <a href="/kurzy" className="hover:text-white transition-colors">
+                <Link to="/malacky/kurzy" className="hover:text-white/80 transition-colors">
                   Kurzy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/o-nas" className="hover:text-white transition-colors">
-                  O nás
-                </a>
+                <Link to="/malacky/dokumenty" className="hover:text-white/80 transition-colors">
+                  Dokumenty
+                </Link>
               </li>
               <li>
-                <a href="/kontakt" className="hover:text-white transition-colors">
-                  Kontakt
-                </a>
+                <Link to="/malacky/vozidla" className="hover:text-white/80 transition-colors">
+                  Vozidlá
+                </Link>
+              </li>
+              <li>
+                <Link to="/malacky/referencie" className="hover:text-white/80 transition-colors">
+                  Referencie
+                </Link>
               </li>
             </ul>
           </div>
-          <div>
-            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Kontakt</h3>
-            <p className="text-sm md:text-base text-gray-400">
-              Email: info@autoskola.cz<br />
-              Telefon: +420 123 456 789
-            </p>
+
+          {/* Kontaktné údaje */}
+          <div className="-ml-8 md:-ml-12">
+            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Kontaktné údaje:</h3>
+            <div className="space-y-2 text-sm md:text-base">
+              <p>
+                <span className="font-semibold">mail:</span>{' '}
+                <a href="mailto:zvykyautoskola@gmail.com" className="hover:text-white/80 transition-colors">
+                  zvykyautoskola@gmail.com
+                </a>
+              </p>
+              <p>
+              <span className="font-semibold">Kontakty:</span>{' '}
+              </p>
+              <p>
+                <span className="font-semibold">Zdeno:</span>{' '}
+                <a href="tel:+421905748441" className="hover:text-white/80 transition-colors">
+                  0905 748 441
+                </a>
+              </p>
+              <p>
+                <span className="font-semibold">Miška:</span>{' '}
+                <a href="tel:+421918472651" className="hover:text-white/80 transition-colors">
+                  0918 472 651
+                </a>
+              </p>
+              <p className="mt-4">
+                <span className="font-semibold">Adresa:</span> Záhorácka 52/24, 901 01 Malacky
+              </p>
+            </div>
           </div>
         </div>
-        <div className="border-t border-gray-700 mt-6 md:mt-8 pt-4 text-center text-xs sm:text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Autoškola. Všechna práva vyhrazena.</p>
+
+        <div className="border-t border-white/20 mt-8 pt-6 text-center text-xs sm:text-sm">
+          <p>&copy; 2025 Zvyky s.r.o. Všetky práva vyhradené.</p>
         </div>
       </div>
     </footer>

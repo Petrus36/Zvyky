@@ -10,6 +10,9 @@ import BratislavaDokumenty from './pages/Bratislava/BratislavaDokumenty'
 import BratislavaKontakt from './pages/Bratislava/BratislavaKontakt'
 import MalackyHome from './pages/Malacky/MalackyHome'
 import MalackyKurzy from './pages/Malacky/MalackyKurzy'
+import KurzBDetail from './pages/Malacky/KurzBDetail'
+import KurzA1Detail from './pages/Malacky/KurzA1Detail'
+import KurzA2Detail from './pages/Malacky/KurzA2Detail'
 import MalackyVozidla from './pages/Malacky/MalackyVozidla'
 import MalackyDokumenty from './pages/Malacky/MalackyDokumenty'
 import MalackyKontakt from './pages/Malacky/MalackyKontakt'
@@ -88,6 +91,36 @@ function App() {
             <MalackyNavigation />
             <main className="flex-grow">
               <MalackyKurzy />
+            </main>
+            <Footer />
+          </div>
+        } />
+        
+        <Route path="/malacky/kurzy/b" element={
+          <div className="min-h-screen flex flex-col">
+            <MalackyNavigation />
+            <main className="flex-grow">
+              <KurzBDetail />
+            </main>
+            <Footer />
+          </div>
+        } />
+        
+        <Route path="/malacky/kurzy/a1" element={
+          <div className="min-h-screen flex flex-col">
+            <MalackyNavigation />
+            <main className="flex-grow">
+              <KurzA1Detail />
+            </main>
+            <Footer />
+          </div>
+        } />
+        
+        <Route path="/malacky/kurzy/a2" element={
+          <div className="min-h-screen flex flex-col">
+            <MalackyNavigation />
+            <main className="flex-grow">
+              <KurzA2Detail />
             </main>
             <Footer />
           </div>

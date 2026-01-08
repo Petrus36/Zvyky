@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const LocationSelector = () => {
   return (
     <div 
-      className="min-h-screen w-full bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center px-4 sm:px-6 md:px-8"
+      className="min-h-screen w-full bg-cover bg-center bg-no-repeat flex flex-col items-center justify-start pt-20 pb-8 sm:pt-24 md:justify-center md:pt-0 px-4 sm:px-6 md:px-8"
       style={{
         backgroundImage: "url('/images/First page background.JPG')"
       }}
@@ -19,7 +19,7 @@ const LocationSelector = () => {
       
       <div className="relative z-10 w-full max-w-5xl">
         {/* Heading */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8 sm:mb-10 md:mb-12 px-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4 mt-4 sm:mt-0">
           Kde chceš zahájit jazdu?
         </h1>
 

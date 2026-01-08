@@ -8,7 +8,7 @@ const MalackyHome = () => {
     <div>
       {/* Hero Section with Background Image */}
       <section 
-        className="relative w-full h-screen min-h-[600px] md:min-h-[700px] lg:min-h-[900px] bg-cover bg-center bg-no-repeat flex items-center"
+        className="relative w-full h-screen min-h-[600px] md:min-h-[700px] lg:h-[70vh] lg:min-h-[600px] bg-cover bg-center bg-no-repeat flex items-center"
         style={{
           backgroundImage: "url('/images/banner1.JPG')"
         }}
@@ -59,9 +59,12 @@ const MalackyHome = () => {
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
               Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
               </p>
-              <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto">
+              <Link
+                to="/malacky/kurzy/a1"
+                className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto text-center block"
+              >
                 Viac informácií
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -80,9 +83,12 @@ const MalackyHome = () => {
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
               Cena nezahŕňa správny poplatok za skúšku (kolok 33€) a poplatok za kurz prvej pomoci
               </p>
-              <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto">
+              <Link
+                to="/malacky/kurzy/b"
+                className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto text-center block"
+              >
                 Viac informácií
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -101,9 +107,12 @@ const MalackyHome = () => {
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                 Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
               </p>
-              <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto">
+              <Link
+                to="/malacky/kurzy/a2"
+                className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto text-center block"
+              >
                 Viac informácií
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -147,7 +156,7 @@ const MalackyHome = () => {
             </div>
             
             {/* Button in bottom right */}
-            <div className="absolute bottom-6 right-6 sm:bottom-12 sm:right-12 md:bottom-20 md:right-32 lg:bottom-28 lg:right-56">
+            <div className="absolute bottom-6 right-6 sm:bottom-12 sm:right-12 md:bottom-20 md:right-32 lg:bottom-12 lg:right-8">
               <button className="bg-black/50 border-2 border-white hover:bg-zvyky-blue active:bg-zvyky-blue text-white px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-lg transition-all font-semibold text-xs sm:text-sm md:text-base font-albert uppercase">
                 Pozri si všetky vozidlá
               </button>
@@ -286,8 +295,8 @@ const MalackyHome = () => {
              onClick={() => setIsMapOpen(true)}
              className="bg-gray-200 rounded-xl md:rounded-2xl overflow-hidden shadow-lg h-64 sm:h-80 md:h-96 cursor-pointer hover:shadow-2xl transition-shadow relative group"
            >
-             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center">
-               <span className="opacity-0 group-hover:opacity-100 bg-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-lg font-semibold text-sm sm:text-base text-gray-800 transition-opacity">
+             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center pointer-events-none">
+               <span className="opacity-0 group-hover:opacity-100 bg-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-lg font-semibold text-sm sm:text-base text-gray-800 transition-opacity pointer-events-auto">
                  Kliknite pre otvorenie mapy
                </span>
              </div>

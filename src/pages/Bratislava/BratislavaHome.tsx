@@ -8,7 +8,7 @@ const BratislavaHome = () => {
     <div>
       {/* Hero Section with Background Image */}
       <section
-        className="relative w-full h-screen min-h-[600px] md:min-h-[700px] lg:min-h-[900px] bg-cover bg-center bg-no-repeat flex items-center"
+        className="relative w-full h-screen min-h-[600px] md:min-h-[700px] lg:h-[70vh] lg:min-h-[600px] bg-cover bg-center bg-no-repeat flex items-center"
         style={{
           backgroundImage: "url('/images/banner1.JPG')"
         }}
@@ -133,8 +133,8 @@ const BratislavaHome = () => {
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-6 sm:px-8 md:px-12 lg:px-16">
-                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 font-inter">Priestory</h2>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-3xl md:max-w-4xl leading-relaxed">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-white mb-6 md:mb-8 font-inter">Priestory</h2>
+                <p className="text-base sm:text-lg md:text-xl lg:text-xl text-white max-w-3xl md:max-w-4xl leading-relaxed">
                   Naša autoškola ponúka moderné, čisté a príjemné priestory, v ktorých sa budete cítiť komfortne už od prvej chvíle. Máme najmodernejšie vybavenie na výučbu, vďaka ktorému sú teória aj príprava jednoduchšie a zrozumiteľnejšie. Chceme, aby ste sa u nás cítili uvoľnene, bezpečne a mali ideálne podmienky na učenie aj sústredenie.
                 </p>
               </div>

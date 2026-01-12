@@ -19,23 +19,23 @@ const MalackyHome = () => {
     <div>
       {/* Hero Section with Background Image */}
       <section 
-        className="relative w-full h-screen min-h-[600px] md:min-h-[700px] lg:h-[75vh] lg:min-h-[700px] bg-cover bg-center bg-no-repeat flex items-center"
+        className="relative w-full h-screen min-h-[600px] md:min-h-[700px] lg:h-[85vh] lg:min-h-[800px] bg-cover bg-center bg-no-repeat flex items-center"
         style={{
           backgroundImage: "url('/images/banner1.JPG')"
         }}
       >
         <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
           <div className="max-w-7xl">
-            {/* Mobile view - larger, bolder and dynamic layout */}
-            <h1 className="block sm:hidden text-6xl font-extrabold text-white mb-6 drop-shadow-2xl font-inter leading-tight uppercase tracking-normal text-left">
-              <div className="mb-3">VODIČSKÝ</div>
-              <div className="mb-3 pl-4">PREUKAZ</div>
-              <div className="mb-3">S NAMI</div>
+            {/* Mobile/Tablet view - larger, bolder and dynamic layout */}
+            <h1 className="block lg:hidden text-6xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-2xl font-inter leading-tight uppercase tracking-normal text-left">
+              <div className="mb-5">VODIČSKÝ</div>
+              <div className="mb-5 pl-4">PREUKAZ</div>
+              <div className="mb-5">S NAMI</div>
               <div className="pl-6">ĽAHKO A RÝCHLO</div>
             </h1>
             
-            {/* Desktop/Tablet view - UNCHANGED */}
-            <h1 className="hidden sm:block text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 md:mb-10 drop-shadow-2xl font-inter leading-relaxed uppercase tracking-normal">
+            {/* Desktop view - UNCHANGED */}
+            <h1 className="hidden lg:block text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 md:mb-10 drop-shadow-2xl font-inter leading-relaxed uppercase tracking-normal">
               <div className="whitespace-nowrap mb-2 md:mb-4">VODIČSKÝ PREUKAZ</div>
               <div className="whitespace-nowrap mb-2 md:mb-4">S NAMI</div>
               <div className="whitespace-nowrap">ĽAHKO A RÝCHLO</div>

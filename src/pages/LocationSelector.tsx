@@ -20,7 +20,7 @@ const LocationSelector = () => {
       <div className="relative z-10 w-full max-w-5xl">
         {/* Heading */}
         <h1 className="text-3xl sm:text-3xl md:text-4xl font-extrabold sm:font-bold text-center text-gray-800 mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4 mt-4 sm:mt-0">
-          Kde chceš zahájit jazdu?
+          Kde chceš zahájiť jazdu?
         </h1>
 
         {/* Location Cards */}
@@ -28,8 +28,22 @@ const LocationSelector = () => {
           {/* Bratislava Card */}
           <Link 
             to="/bratislava"
-            className="relative group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+            className="relative group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 ring-4 ring-yellow-400 ring-opacity-50"
           >
+            {/* Corner Ribbon Badge */}
+            <div className="absolute top-0 right-0 z-20 overflow-hidden w-32 h-32 pointer-events-none">
+              <div className="absolute top-6 -right-8 transform rotate-45 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white text-xs sm:text-sm font-bold py-2 px-10 shadow-lg">
+                <div className="flex items-center justify-center gap-1">
+                  <span className="text-lg">✨</span>
+                  <span className="uppercase tracking-wider">NOVÉ</span>
+                  <span className="text-lg">✨</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Animated glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/20 via-transparent to-yellow-400/20 animate-pulse"></div>
+            
             <div className="aspect-square bg-gray-200">
               <img 
                 src="/images/H_i20_Š.JPG" 
@@ -39,7 +53,12 @@ const LocationSelector = () => {
             </div>
             <div className="absolute inset-0 bg-black bg-opacity-40"></div>
             <div className="absolute inset-0 flex items-center justify-center text-white text-center px-4">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-karla">BRATISLAVA</h2>
+              <div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-karla mb-2">BRATISLAVA</h2>
+                <div className="inline-block bg-yellow-500 text-black font-bold text-xs sm:text-sm px-3 py-1 rounded-full uppercase tracking-wide shadow-lg">
+                  Práve otvorené! 🎉
+                </div>
+              </div>
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white text-center">
               <div className="flex items-start space-x-2 justify-center">

@@ -6,7 +6,7 @@ const MalackyVozidla = () => {
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-12 md:mb-16 font-inter">NA ČOM JAZDÍME</h1>
         
         {/* Top 3 Cars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 lg:hidden">
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img 
               src="/images/aaaaa.JPG" 
@@ -73,42 +73,42 @@ const MalackyVozidla = () => {
               <img 
                 src="/images/hiundaz_i20_Zvyka.JPG" 
                 alt="Hyundai i20" 
-                className="w-full h-64 md:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-64 md:h-80 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img 
                 src="/images/2222.JPG" 
                 alt="Hyundai i20" 
-                className="w-full h-64 md:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-64 md:h-80 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img 
                 src="/images/aaaaa.JPG" 
                 alt="Hyundai i20" 
-                className="w-full h-64 md:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-64 md:h-80 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img 
                 src="/images/Interier_i20_M.JPG" 
                 alt="Hyundai i20" 
-                className="w-full h-64 md:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-64 md:h-80 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img 
                 src="/images/H_i20_Č_M.JPG" 
                 alt="Hyundai i20 Interiér" 
-                className="w-full h-64 md:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-64 md:h-80 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img 
                 src="/images/H_i20_Š.JPG" 
                 alt="Vozidlo 6" 
-                className="w-full h-64 md:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-64 md:h-80 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           </div>

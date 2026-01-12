@@ -27,12 +27,6 @@ const BratislavaHome = () => {
               >
                 Kurzy
               </a>
-              <a
-                href="/bratislava/prihlaska"
-                className="bg-transparent border-2 border-white hover:bg-white hover:text-zvyky-blue text-white uppercase font-semibold px-6 sm:px-8 md:px-10 py-3 md:py-4 text-base sm:text-lg md:text-xl rounded-lg transition-all font-karla text-center"
-              >
-                Online prihláška
-              </a>
             </div>
           </div>
         </div>
@@ -59,9 +53,12 @@ const BratislavaHome = () => {
                 <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                   Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
                 </p>
-                <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto">
+                <Link
+                  to="/bratislava/kurzy/a1"
+                  className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto text-center block"
+                >
                   Viac informácií
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -80,9 +77,12 @@ const BratislavaHome = () => {
                 <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                   Cena nezahŕňa správny poplatok za skúšku (kolok 33€) a poplatok za kurz prvej pomoci
                 </p>
-                <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto">
+                <Link
+                  to="/bratislava/kurzy/b"
+                  className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto text-center block"
+                >
                   Viac informácií
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -101,9 +101,12 @@ const BratislavaHome = () => {
                 <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                   Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
                 </p>
-                <button className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto">
+                <Link
+                  to="/bratislava/kurzy/a2"
+                  className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-6 py-2 rounded-lg transition-all font-semibold uppercase text-sm font-albert mt-auto text-center block"
+                >
                   Viac informácií
-                </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -144,3 +144,4 @@ const KurzA1Detail = () => {
 
 export default KurzA1Detail
 
+

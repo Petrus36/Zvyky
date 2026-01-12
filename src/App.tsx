@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 import MalackyNavigation from './components/MalackyNavigation'
 import BratislavaNavigation from './components/BratislavaNavigation'
 import Footer from './components/Footer'
@@ -20,6 +21,7 @@ import MalackyKontakt from './pages/Malacky/MalackyKontakt'
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         {/* Location Selector - No Nav/Footer */}
         <Route path="/" element={<LocationSelector />} />

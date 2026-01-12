@@ -27,12 +27,6 @@ const MalackyHome = () => {
               >
                 Kurzy
               </a>
-              <a 
-                href="/malacky/prihlaska"
-                className="bg-transparent border-2 border-white hover:bg-white hover:text-zvyky-blue text-white uppercase font-semibold px-6 sm:px-8 md:px-10 py-3 md:py-4 text-base sm:text-lg md:text-xl rounded-lg transition-all font-karla text-center"
-              >
-                Online prihláška
-              </a>
             </div>
           </div>
         </div>
@@ -157,9 +151,12 @@ const MalackyHome = () => {
             
             {/* Button in bottom right */}
             <div className="absolute bottom-6 right-6 sm:bottom-12 sm:right-12 md:bottom-20 md:right-32 lg:bottom-12 lg:right-8">
-              <button className="bg-black/50 border-2 border-white hover:bg-zvyky-blue active:bg-zvyky-blue text-white px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-lg transition-all font-semibold text-xs sm:text-sm md:text-base font-albert uppercase">
+              <Link
+                to="/malacky/vozidla"
+                className="bg-black/50 border-2 border-white hover:bg-zvyky-blue active:bg-zvyky-blue text-white px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-lg transition-all font-semibold text-xs sm:text-sm md:text-base font-albert uppercase inline-block"
+              >
                 Pozri si všetky vozidlá
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -41,7 +41,7 @@ const BratislavaVozidla = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 md:mb-12 font-inter">Galéria vozidiel</h2>
           
           {/* Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img 
                 src="/images/h_i20_ba_2.JPG" 

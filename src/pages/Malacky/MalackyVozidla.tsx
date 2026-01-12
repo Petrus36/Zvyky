@@ -6,7 +6,7 @@ const MalackyVozidla = () => {
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-12 md:mb-16 font-inter">NA ČOM JAZDÍME</h1>
         
         {/* Top 3 Cars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 lg:hidden">
+        <div className="hidden lg:grid lg:grid-cols-3 gap-6 mb-12">
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img 
               src="/images/aaaaa.JPG" 
@@ -68,7 +68,7 @@ const MalackyVozidla = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 md:mb-12 font-inter">Galéria vozidiel</h2>
           
           {/* Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img 
                 src="/images/hiundaz_i20_Zvyka.JPG" 

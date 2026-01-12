@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import LocationSelector from './pages/LocationSelector'
 import BratislavaHome from './pages/Bratislava/BratislavaHome'
 import BratislavaKurzy from './pages/Bratislava/BratislavaKurzy'
+import BratislavaKurzBDetail from './pages/Bratislava/BratislavaKurzBDetail'
 import BratislavaVozidla from './pages/Bratislava/BratislavaVozidla'
 import BratislavaDokumenty from './pages/Bratislava/BratislavaDokumenty'
 import BratislavaKontakt from './pages/Bratislava/BratislavaKontakt'
@@ -42,6 +43,16 @@ function App() {
             <BratislavaNavigation />
             <main className="flex-grow">
               <BratislavaKurzy />
+            </main>
+            <Footer />
+          </div>
+        } />
+
+        <Route path="/bratislava/kurzy/b" element={
+          <div className="min-h-screen flex flex-col">
+            <BratislavaNavigation />
+            <main className="flex-grow">
+              <BratislavaKurzBDetail />
             </main>
             <Footer />
           </div>

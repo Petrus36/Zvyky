@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
 
           {/* Kontaktné údaje */}
-          <div className="-ml-8 md:-ml-12">
+          <div className="ml-0 md:-ml-12">
             <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Kontaktné údaje:</h3>
             <div className="space-y-2 text-sm md:text-base">
               {isBratislava ? (

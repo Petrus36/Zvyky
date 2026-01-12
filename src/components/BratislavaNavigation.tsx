@@ -20,7 +20,7 @@ const BratislavaNavigation = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center -ml-4 sm:-ml-6 md:-ml-8 lg:-ml-12">
+          <Link to="/" className="flex items-center -ml-2 sm:-ml-6 md:ml-0 lg:ml-4 xl:-ml-12">
             <img 
               src="/images/zvyky_autoskola_TRUE_TRANSPARENT.webp" 
               alt="Zvyky Autoškola Logo" 
@@ -44,7 +44,7 @@ const BratislavaNavigation = () => {
           </button>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 flex-1 justify-end pr-4 lg:pr-16">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 flex-1 md:justify-center lg:justify-center xl:justify-end pr-4 lg:pr-0 xl:pr-16">
             <Link 
               to="/bratislava" 
               className="text-black uppercase font-semibold hover:text-zvyky-blue transition-colors font-albert text-sm lg:text-base"
@@ -68,12 +68,6 @@ const BratislavaNavigation = () => {
               className="text-black uppercase font-semibold hover:text-zvyky-blue transition-colors font-albert text-sm lg:text-base"
             >
               Vozidlá
-            </Link>
-            <Link 
-              to="/bratislava/referencie" 
-              className="text-black uppercase font-semibold hover:text-zvyky-blue transition-colors font-albert text-sm lg:text-base"
-            >
-              Referencie
             </Link>
           </div>
         </div>
@@ -119,13 +113,6 @@ const BratislavaNavigation = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Vozidlá
-            </Link>
-            <Link 
-              to="/bratislava/referencie" 
-              className="px-6 py-3 text-black uppercase font-semibold hover:bg-zvyky-blue hover:text-white transition-colors font-albert"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Referencie
             </Link>
             <Link 
               to="/bratislava/kontakt" 

@@ -19,7 +19,7 @@ const LocationSelector = () => {
       
       <div className="relative z-10 w-full max-w-5xl">
         {/* Heading */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4 mt-4 sm:mt-0">
+        <h1 className="text-3xl sm:text-3xl md:text-4xl font-extrabold sm:font-bold text-center text-gray-800 mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4 mt-4 sm:mt-0">
           Kde chceš zahájit jazdu?
         </h1>
 

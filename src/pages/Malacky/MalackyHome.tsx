@@ -3,27 +3,47 @@ import { Link } from 'react-router-dom'
 
 const MalackyHome = () => {
   const [isMapOpen, setIsMapOpen] = React.useState(false);
+  const testimonialsRef = React.useRef<HTMLDivElement>(null);
+
+  const scrollTestimonials = (direction: 'left' | 'right') => {
+    if (testimonialsRef.current) {
+      const scrollAmount = testimonialsRef.current.offsetWidth / 2;
+      testimonialsRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <div>
       {/* Hero Section with Background Image */}
       <section 
-        className="relative w-full h-screen min-h-[600px] md:min-h-[700px] lg:h-[70vh] lg:min-h-[600px] bg-cover bg-center bg-no-repeat flex items-center"
+        className="relative w-full h-screen min-h-[600px] md:min-h-[700px] lg:h-[75vh] lg:min-h-[700px] bg-cover bg-center bg-no-repeat flex items-center"
         style={{
           backgroundImage: "url('/images/banner1.JPG')"
         }}
       >
         <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
           <div className="max-w-7xl">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 md:mb-10 drop-shadow-2xl font-inter leading-relaxed uppercase tracking-normal">
-              <div className="whitespace-nowrap mb-1 sm:mb-2 md:mb-4">VODIČSKÝ PREUKAZ</div>
-              <div className="whitespace-nowrap mb-1 sm:mb-2 md:mb-4">S NAMI</div>
+            {/* Mobile view - larger, bolder and dynamic layout */}
+            <h1 className="block sm:hidden text-6xl font-extrabold text-white mb-6 drop-shadow-2xl font-inter leading-tight uppercase tracking-normal text-left">
+              <div className="mb-3">VODIČSKÝ</div>
+              <div className="mb-3 pl-4">PREUKAZ</div>
+              <div className="mb-3">S NAMI</div>
+              <div className="pl-6">ĽAHKO A RÝCHLO</div>
+            </h1>
+            
+            {/* Desktop/Tablet view - UNCHANGED */}
+            <h1 className="hidden sm:block text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 md:mb-10 drop-shadow-2xl font-inter leading-relaxed uppercase tracking-normal">
+              <div className="whitespace-nowrap mb-2 md:mb-4">VODIČSKÝ PREUKAZ</div>
+              <div className="whitespace-nowrap mb-2 md:mb-4">S NAMI</div>
               <div className="whitespace-nowrap">ĽAHKO A RÝCHLO</div>
             </h1>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
               <a 
                 href="/malacky/kurzy"
-                className="bg-zvyky-blue hover:opacity-90 text-white uppercase font-semibold px-6 sm:px-8 md:px-10 py-3 md:py-4 text-base sm:text-lg md:text-xl rounded-lg transition-all font-karla text-center"
+                className="bg-zvyky-blue hover:opacity-90 text-white uppercase font-semibold px-3 sm:px-8 md:px-10 py-3 md:py-4 text-base sm:text-lg md:text-xl rounded-lg transition-all font-karla text-center w-1/2 sm:w-auto"
               >
                 Kurzy
               </a>
@@ -37,7 +57,7 @@ const MalackyHome = () => {
       <section className="mb-8 md:mb-16 max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-8 md:mb-12 font-inter">Naše kurzy</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
           {/* A1 Card */}
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
             <div className="h-64 bg-gray-300 overflow-hidden">
@@ -87,7 +107,7 @@ const MalackyHome = () => {
           </div>
 
           {/* A2 Card */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col md:col-span-2 md:mx-auto md:max-w-md lg:col-span-1 lg:max-w-none">
             <div className="h-64 bg-gray-300 overflow-hidden">
               <img 
                 src="/images/A2_photo.JPG" 
@@ -167,17 +187,24 @@ const MalackyHome = () => {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-8 md:mb-12 font-inter">Čo o nás hovoria...</h2>
         
         <div className="relative flex items-center">
-          {/* Left Arrow - Hidden on mobile */}
-          <button className="hidden md:block absolute left-0 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow -ml-6">
+          {/* Left Arrow - Hidden on mobile, visible on tablet, hidden on desktop */}
+          <button 
+            onClick={() => scrollTestimonials('left')}
+            className="hidden md:block lg:hidden absolute left-0 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow -ml-6"
+          >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
-          {/* Testimonial Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full px-0 md:px-12">
+          {/* Testimonial Cards Container - Hide overflow on tablet */}
+          <div className="md:overflow-hidden lg:overflow-visible w-full px-0 md:px-12">
+            <div 
+              ref={testimonialsRef}
+              className="grid grid-cols-1 md:flex md:overflow-x-auto md:snap-x md:snap-mandatory md:scrollbar-hide lg:grid lg:grid-cols-3 gap-6 md:gap-8"
+            >
             {/* Testimonial 1 */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow md:snap-start md:min-w-[calc(50%-1rem)] lg:min-w-0">
               <div className="flex flex-col items-center mb-6">
                 <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center mb-4">
                   <span className="text-2xl font-bold text-gray-600">SH</span>
@@ -193,7 +220,7 @@ const MalackyHome = () => {
             </div>
 
             {/* Testimonial 2 */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow md:snap-start md:min-w-[calc(50%-1rem)] lg:min-w-0">
               <div className="flex flex-col items-center mb-6">
                 <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center mb-4">
                   <span className="text-2xl font-bold text-gray-600">PŠ</span>
@@ -209,7 +236,7 @@ const MalackyHome = () => {
             </div>
 
             {/* Testimonial 3 */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow md:snap-start md:min-w-[calc(50%-1rem)] lg:min-w-0">
               <div className="flex flex-col items-center mb-6">
                 <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center mb-4">
                   <span className="text-2xl font-bold text-gray-600">MK</span>
@@ -223,10 +250,14 @@ const MalackyHome = () => {
                 Autoškolu hodnotím celkovo pozitívne. Inštruktor bol v pohode, vedel vysvetliť chyby normálne a bez zbytočného stresu. Jazdy mali zmysel - nebolo to len krúženie po meste, ale vždy sme riešili konkrétne veci (križovatky, parkovanie, rozjazdy do kopca). Auto bolo udržiavané a nič na ňom "nehrkotalo". Jediné mínus je, že niekedy bolo ťažšie dohodnúť termín jazdy, hlavne ku koncu, keď mali viac ľudí. Inak som spokojný a na skúške som sa cítil pripravený.
               </p>
             </div>
+            </div>
           </div>
 
-          {/* Right Arrow - Hidden on mobile */}
-          <button className="hidden md:block absolute right-0 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow -mr-6">
+          {/* Right Arrow - Hidden on mobile, visible on tablet, hidden on desktop */}
+          <button 
+            onClick={() => scrollTestimonials('right')}
+            className="hidden md:block lg:hidden absolute right-0 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow -mr-6"
+          >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
@@ -253,61 +284,28 @@ const MalackyHome = () => {
       <section className="mb-8 md:mb-16 py-6 md:py-12">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-8 md:mb-12 font-inter">Kde nás nájdete</h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
-          {/* Left - Instructions */}
-          <div className="space-y-4 md:space-y-6">
-             <div className="flex gap-3 md:gap-4">
-               <span className="text-xl md:text-2xl font-bold text-black flex-shrink-0">1.</span>
-               <div>
-                 <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                   Nájdete nás na ulici <span className="font-semibold">Záhorácka 52/24, 901 01 Malacky</span> - sme v blízkosti (orientačný bod, 
-                   napr. zastávky, školy, obchodného centra)
-                 </p>
-               </div>
-             </div>
-
-            <div className="flex gap-3 md:gap-4">
-              <span className="text-xl md:text-2xl font-bold text-black flex-shrink-0">2.</span>
-              <div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Vstupe do budovy - sme v budove (popre, napr. schodenom vstupom / z ľavej 
-                  strany budovy. / popísat ako vstup)
-                </p>
-              </div>
+        <div className="flex justify-center">
+          {/* Map */}
+          <div 
+            onClick={() => setIsMapOpen(true)}
+            className="bg-gray-200 rounded-xl md:rounded-2xl overflow-hidden shadow-lg h-64 sm:h-80 md:h-96 w-full max-w-4xl cursor-pointer hover:shadow-2xl transition-shadow relative group"
+          >
+            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center pointer-events-none">
+              <span className="opacity-0 group-hover:opacity-100 bg-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-lg font-semibold text-sm sm:text-base text-gray-800 transition-opacity pointer-events-auto">
+                Kliknite pre otvorenie mapy
+              </span>
             </div>
-
-            <div className="flex gap-3 md:gap-4">
-              <span className="text-xl md:text-2xl font-bold text-black flex-shrink-0">3.</span>
-              <div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Hľadajte veľký nápis <span className="font-semibold">"AUTOŠKOLA ZVYKY"</span> - nájdete nás na (poschodí), 
-                  hneď pri vstupe/vľavo/vpravo.
-                </p>
-              </div>
-            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.8!2d17.2326!3d48.4103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8e3a8e8e8e8f%3A0x0!2sZ%C3%A1hor%C3%A1cka%2052%2F24%2C%20901%2001%20Malacky!5e0!3m2!1sen!2ssk!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0, pointerEvents: 'none' }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
-
-           {/* Right - Map */}
-           <div 
-             onClick={() => setIsMapOpen(true)}
-             className="bg-gray-200 rounded-xl md:rounded-2xl overflow-hidden shadow-lg h-64 sm:h-80 md:h-96 cursor-pointer hover:shadow-2xl transition-shadow relative group"
-           >
-             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all z-10 flex items-center justify-center pointer-events-none">
-               <span className="opacity-0 group-hover:opacity-100 bg-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-lg font-semibold text-sm sm:text-base text-gray-800 transition-opacity pointer-events-auto">
-                 Kliknite pre otvorenie mapy
-               </span>
-             </div>
-             <iframe
-               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.8!2d17.2326!3d48.4103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8e3a8e8e8e8f%3A0x0!2sZ%C3%A1hor%C3%A1cka%2052%2F24%2C%20901%2001%20Malacky!5e0!3m2!1sen!2ssk!4v1234567890"
-               width="100%"
-               height="100%"
-               style={{ border: 0, pointerEvents: 'none' }}
-               loading="lazy"
-               referrerPolicy="no-referrer-when-downgrade"
-             ></iframe>
-           </div>
-         </div>
-       </section>
+        </div>
+      </section>
       </div>
 
 

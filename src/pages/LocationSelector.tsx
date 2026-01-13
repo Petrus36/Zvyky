@@ -66,7 +66,7 @@ const LocationSelector = () => {
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
                 <p className="text-xs sm:text-sm md:text-base">
-                  Seberíniho 482/1, 821 04 Bratislava, Slovensko
+                  Záhradnícka 4882/46, 821 08 Bratislava
                 </p>
               </div>
             </div>
@@ -94,7 +94,7 @@ const LocationSelector = () => {
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
                 <p className="text-xs sm:text-sm md:text-base">
-                  Kláštorné námestie 1161/7,<br />
+                  Záhorácka 52/24,<br />
                   901 01<br />
                   Malacky, Slovensko
                 </p>

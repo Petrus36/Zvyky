@@ -41,12 +41,12 @@ const MalackyHome = () => {
               <div className="whitespace-nowrap">ĽAHKO A RÝCHLO</div>
             </h1>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
-              <a 
-                href="/malacky/kurzy"
+              <Link 
+                to="/malacky/kurzy"
                 className="bg-zvyky-blue hover:opacity-90 text-white uppercase font-semibold px-3 sm:px-8 md:px-10 py-3 md:py-4 text-base sm:text-lg md:text-xl rounded-lg transition-all font-karla text-center w-1/2 sm:w-auto"
               >
                 Kurzy
-              </a>
+              </Link>
             </div>
           </div>
         </div>

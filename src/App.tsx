@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+// import { Analytics } from '@vercel/analytics/react'
 import ScrollToTop from './components/ScrollToTop'
 import MalackyNavigation from './components/MalackyNavigation'
 import BratislavaNavigation from './components/BratislavaNavigation'
@@ -169,6 +170,7 @@ function App() {
           </div>
         } />
       </Routes>
+      {/* <Analytics /> */}
     </Router>
   )
 }

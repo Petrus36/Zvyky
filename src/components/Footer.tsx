@@ -41,11 +41,6 @@ const Footer = () => {
                   Vozidlá
                 </Link>
               </li>
-              <li>
-                <Link to={isBratislava ? "/bratislava/referencie" : "/malacky/referencie"} className="hover:text-white/80 transition-colors">
-                  Referencie
-                </Link>
-              </li>
             </ul>
           </div>
 

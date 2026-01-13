@@ -19,7 +19,7 @@ const MalackyHome = () => {
     <div>
       {/* Hero Section with Background Image */}
       <section 
-        className="relative w-full h-screen min-h-[600px] md:min-h-[700px] lg:h-[85vh] lg:min-h-[800px] bg-cover bg-center bg-no-repeat flex items-center"
+        className="relative w-full h-screen min-h-[500px] md:min-h-[700px] lg:h-[85vh] lg:min-h-[800px] bg-cover bg-center bg-no-repeat flex items-center -mt-16 md:-mt-20"
         style={{
           backgroundImage: "url('/images/banner1.JPG')"
         }}
@@ -27,11 +27,11 @@ const MalackyHome = () => {
         <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
           <div className="max-w-7xl">
             {/* Mobile/Tablet view - larger, bolder and dynamic layout */}
-            <h1 className="block lg:hidden text-6xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-2xl font-inter leading-tight uppercase tracking-normal text-left">
-              <div className="mb-5">VODIČSKÝ</div>
-              <div className="mb-5 pl-4">PREUKAZ</div>
-              <div className="mb-5">S NAMI</div>
-              <div className="pl-6">ĽAHKO A RÝCHLO</div>
+            <h1 className="block lg:hidden text-5xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-2xl font-inter leading-tight uppercase tracking-normal text-left mt-12 md:mt-0">
+              <div className="mb-2 md:mb-5">VODIČSKÝ</div>
+              <div className="mb-2 md:mb-5">PREUKAZ</div>
+              <div className="mb-2 md:mb-5">S NAMI</div>
+              <div className="mb-2 md:mb-5">ĽAHKO A RÝCHLO</div>
             </h1>
             
             {/* Desktop view - UNCHANGED */}

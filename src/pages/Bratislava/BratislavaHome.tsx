@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 
 const BratislavaHome = () => {
   const [isMapOpen, setIsMapOpen] = React.useState(false);
+  const [isAnnouncementOpen, setIsAnnouncementOpen] = React.useState(true);
 
   return (
     <div>
       {/* Hero Section with Background Image */}
       <section
-        className="relative w-full h-screen min-h-[600px] md:min-h-[700px] lg:h-[85vh] lg:min-h-[800px] xl:h-[90vh] xl:min-h-[850px] bg-cover bg-center bg-no-repeat flex items-center"
+        className="relative w-full h-screen min-h-[500px] md:min-h-[700px] lg:h-[85vh] lg:min-h-[800px] xl:h-[90vh] xl:min-h-[850px] bg-cover bg-center bg-no-repeat flex items-center -mt-16 md:-mt-20"
         style={{
           backgroundImage: "url('/images/banner1.JPG')"
         }}
@@ -16,11 +17,11 @@ const BratislavaHome = () => {
         <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
           <div className="max-w-7xl">
             {/* Mobile/Tablet view - larger, bolder and dynamic layout */}
-            <h1 className="block lg:hidden text-6xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-2xl font-inter leading-tight uppercase tracking-normal text-left">
-              <div className="mb-5">VODIČSKÝ</div>
-              <div className="mb-5 pl-4">PREUKAZ</div>
-              <div className="mb-5">S NAMI</div>
-              <div className="pl-6">ĽAHKO A RÝCHLO</div>
+            <h1 className="block lg:hidden text-5xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-2xl font-inter leading-tight uppercase tracking-normal text-left mt-12 md:mt-0">
+              <div className="mb-2 md:mb-5">VODIČSKÝ</div>
+              <div className="mb-2 md:mb-5">PREUKAZ</div>
+              <div className="mb-2 md:mb-5">S NAMI</div>
+              <div className="mb-2 md:mb-5">ĽAHKO A RÝCHLO</div>
             </h1>
             
             {/* Desktop view - UNCHANGED */}
@@ -254,6 +255,77 @@ const BratislavaHome = () => {
 
         </div>
 
+      )}
+
+      {/* Announcement Popup */}
+      {isAnnouncementOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+          onClick={() => setIsAnnouncementOpen(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl w-full max-w-md relative shadow-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Decorative top bar */}
+            <div className="h-2 bg-gradient-to-r from-zvyky-blue to-blue-600"></div>
+            
+            <div className="p-6 sm:p-8">
+              {/* Close button */}
+              <button
+                onClick={() => setIsAnnouncementOpen(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Icon */}
+              <div className="flex justify-center mb-4">
+                <div className="bg-zvyky-blue bg-opacity-10 rounded-full p-4">
+                  <svg className="w-12 h-12 text-zvyky-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Title */}
+              <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-3 font-inter">
+                Nový kurz!
+              </h2>
+
+              {/* Date badge */}
+              <div className="flex justify-center mb-4">
+                <span className="inline-block bg-zvyky-blue text-white font-bold text-sm sm:text-base px-4 py-2 rounded-full uppercase tracking-wide shadow-lg">
+                  19. 1. 2026
+                </span>
+              </div>
+
+              {/* Message */}
+              <p className="text-center text-gray-600 text-base sm:text-lg mb-6 leading-relaxed">
+                Začíname nový kurz! Nezmeškajte príležitosť získať vodičský preukaz s profesionálnym vedením.
+              </p>
+
+              {/* Action buttons */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  to="/bratislava/kurzy"
+                  onClick={() => setIsAnnouncementOpen(false)}
+                  className="flex-1 bg-zvyky-blue hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all text-center uppercase text-sm tracking-wide shadow-lg"
+                >
+                  Zobraziť kurzy
+                </Link>
+                <button
+                  onClick={() => setIsAnnouncementOpen(false)}
+                  className="flex-1 border-2 border-gray-300 hover:border-zvyky-blue text-gray-700 hover:text-zvyky-blue font-semibold px-6 py-3 rounded-lg transition-all uppercase text-sm tracking-wide"
+                >
+                  Zavrieť
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   )

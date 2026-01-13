@@ -24,7 +24,7 @@ const LocationSelector = () => {
         </h1>
 
         {/* Location Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-sm md:max-w-4xl mx-auto">
           {/* Bratislava Card */}
           <Link 
             to="/bratislava"

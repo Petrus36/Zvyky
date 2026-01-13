@@ -8,14 +8,9 @@ const BratislavaNavigation = () => {
     <nav className="sticky top-0 z-50">
       <div 
         className="relative overflow-hidden"
-        style={{
-          backgroundImage: "url('/images/nav bar background.JPG')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
       >
-        {/* Overlay for better text visibility */}
-        <div className="absolute inset-0 bg-white bg-opacity-20 backdrop-blur-sm"></div>
+        {/* See-through background */}
+        <div className="absolute inset-0 bg-white bg-opacity-25 backdrop-blur-sm"></div>
       
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -44,7 +39,7 @@ const BratislavaNavigation = () => {
           </button>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 flex-1 md:justify-center lg:justify-center xl:justify-end pr-4 lg:pr-0 xl:pr-16">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 flex-1 md:justify-center lg:justify-end xl:justify-end pr-4 lg:mr-32 xl:pr-16">
             <Link 
               to="/bratislava" 
               className="text-black uppercase font-semibold hover:text-zvyky-blue transition-colors font-albert text-sm lg:text-base"

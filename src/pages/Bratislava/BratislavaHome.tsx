@@ -291,20 +291,65 @@ const BratislavaHome = () => {
               </div>
 
               {/* Title */}
-              <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-3 font-inter">
-                Nový kurz!
+              <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-4 font-inter">
+                Nové kurzy!
               </h2>
 
-              {/* Date badge */}
-              <div className="flex justify-center mb-4">
-                <span className="inline-block bg-zvyky-blue text-white font-bold text-sm sm:text-base px-4 py-2 rounded-full uppercase tracking-wide shadow-lg">
-                  19. 1. 2026
-                </span>
+              {/* Message */}
+              <p className="text-center text-gray-600 text-sm sm:text-base mb-5 leading-relaxed">
+                Začíname nové kurzy! Vyber si termín, ktorý ti vyhovuje:
+              </p>
+
+              {/* Three dates in a creative grid layout */}
+              <div className="mb-6 space-y-3">
+                {/* First date - highlighted as starting soon */}
+                <div className="relative group">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-zvyky-blue to-blue-600 rounded-xl opacity-75 group-hover:opacity-100 transition-opacity blur-sm"></div>
+                  <div className="relative bg-white rounded-xl p-4 flex items-center justify-between border-2 border-zvyky-blue">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-zvyky-blue text-white rounded-lg px-3 py-2 font-bold text-lg">
+                        19
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-500 font-semibold">JANUÁR</div>
+                        <div className="text-xs text-gray-400">2026</div>
+                      </div>
+                    </div>
+                    <span className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md animate-pulse">
+                      Už čoskoro!
+                    </span>
+                  </div>
+                </div>
+
+                {/* Second and third dates in a row */}
+                <div className="grid grid-cols-2 gap-3">
+                  {/* Second date */}
+                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3 border-2 border-gray-200 hover:border-zvyky-blue transition-colors group">
+                    <div className="flex flex-col items-center">
+                      <div className="bg-white group-hover:bg-zvyky-blue group-hover:text-white text-gray-800 rounded-lg px-3 py-2 font-bold text-xl mb-1 transition-colors shadow-sm">
+                        26
+                      </div>
+                      <div className="text-xs text-gray-500 font-semibold uppercase">Január</div>
+                      <div className="text-xs text-gray-400">2026</div>
+                    </div>
+                  </div>
+
+                  {/* Third date */}
+                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3 border-2 border-gray-200 hover:border-zvyky-blue transition-colors group">
+                    <div className="flex flex-col items-center">
+                      <div className="bg-white group-hover:bg-zvyky-blue group-hover:text-white text-gray-800 rounded-lg px-3 py-2 font-bold text-xl mb-1 transition-colors shadow-sm">
+                        28
+                      </div>
+                      <div className="text-xs text-gray-500 font-semibold uppercase">Január</div>
+                      <div className="text-xs text-gray-400">2026</div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Message */}
-              <p className="text-center text-gray-600 text-base sm:text-lg mb-6 leading-relaxed">
-                Začíname nový kurz! Nezmeškajte príležitosť získať vodičský preukaz s profesionálnym vedením.
+              {/* Additional info */}
+              <p className="text-center text-gray-500 text-xs sm:text-sm mb-6">
+                 Profesionálne vedenie • Moderné vozidlá •  Vysoká úspešnosť
               </p>
 
               {/* Action buttons */}

@@ -86,6 +86,20 @@ const MalackyVozidla = () => {
                 className="w-full h-64 md:h-80 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
+            <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <img 
+                src="/images/Motorka1.JPG" 
+                alt="Motorka pre kurzy A1/A2" 
+                className="w-full h-64 md:h-80 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <img 
+                src="/images/Motorka2.JPG" 
+                alt="Motorka pre kurzy A1/A2 - zadný pohľad" 
+                className="w-full h-64 md:h-80 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
           </div>
         </div>
       </div>

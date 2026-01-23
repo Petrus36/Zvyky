@@ -5,6 +5,28 @@ const BratislavaHome = () => {
   const [isMapOpen, setIsMapOpen] = React.useState(false);
   const [isAnnouncementOpen, setIsAnnouncementOpen] = React.useState(true);
 
+  // Function to get upcoming course dates based on current date
+  const getUpcomingDates = () => {
+    const today = new Date();
+    const currentDate = today.getDate();
+    const currentMonth = today.getMonth(); // 0 = January, 1 = February, etc.
+    const currentYear = today.getFullYear();
+
+    // Define all available dates for 2026
+    const allDates = [
+      { day: 26, month: 'Január', year: 2026, date: new Date(2026, 0, 26) },
+      { day: 28, month: 'Január', year: 2026, date: new Date(2026, 0, 28) },
+    ];
+
+    // Filter dates that are in the future (after today)
+    const upcomingDates = allDates.filter(dateObj => dateObj.date >= today);
+
+    // Return upcoming dates (up to 3)
+    return upcomingDates.slice(0, 3);
+  };
+
+  const courseDates = getUpcomingDates();
+
   return (
     <div>
       {/* Hero Section with Background Image */}
@@ -302,49 +324,57 @@ const BratislavaHome = () => {
 
               {/* Three dates in a creative grid layout */}
               <div className="mb-6 space-y-3">
-                {/* First date - highlighted as starting soon */}
-                <div className="relative group">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-zvyky-blue to-blue-600 rounded-xl opacity-75 group-hover:opacity-100 transition-opacity blur-sm"></div>
-                  <div className="relative bg-white rounded-xl p-4 flex items-center justify-between border-2 border-zvyky-blue">
-                    <div className="flex items-center gap-3">
-                      <div className="bg-zvyky-blue text-white rounded-lg px-3 py-2 font-bold text-lg">
-                        19
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-500 font-semibold">JANUÁR</div>
-                        <div className="text-xs text-gray-400">2026</div>
+                {courseDates.length > 0 && (
+                  <>
+                    {/* First date - highlighted as starting soon */}
+                    <div className="relative group">
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-zvyky-blue to-blue-600 rounded-xl opacity-75 group-hover:opacity-100 transition-opacity blur-sm"></div>
+                      <div className="relative bg-white rounded-xl p-4 flex items-center justify-between border-2 border-zvyky-blue">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-zvyky-blue text-white rounded-lg px-3 py-2 font-bold text-lg">
+                            {courseDates[0].day}
+                          </div>
+                          <div>
+                            <div className="text-sm text-gray-500 font-semibold uppercase">{courseDates[0].month}</div>
+                            <div className="text-xs text-gray-400">{courseDates[0].year}</div>
+                          </div>
+                        </div>
+                        <span className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md animate-pulse">
+                          Už čoskoro!
+                        </span>
                       </div>
                     </div>
-                    <span className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md animate-pulse">
-                      Už čoskoro!
-                    </span>
-                  </div>
-                </div>
 
-                {/* Second and third dates in a row */}
-                <div className="grid grid-cols-2 gap-3">
-                  {/* Second date */}
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3 border-2 border-gray-200 hover:border-zvyky-blue transition-colors group">
-                    <div className="flex flex-col items-center">
-                      <div className="bg-white group-hover:bg-zvyky-blue group-hover:text-white text-gray-800 rounded-lg px-3 py-2 font-bold text-xl mb-1 transition-colors shadow-sm">
-                        26
-                      </div>
-                      <div className="text-xs text-gray-500 font-semibold uppercase">Január</div>
-                      <div className="text-xs text-gray-400">2026</div>
-                    </div>
-                  </div>
+                    {/* Second and third dates in a row */}
+                    <div className="grid grid-cols-2 gap-3">
+                      {/* Second date */}
+                      {courseDates[1] && (
+                        <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3 border-2 border-gray-200 hover:border-zvyky-blue transition-colors group">
+                          <div className="flex flex-col items-center">
+                            <div className="bg-white group-hover:bg-zvyky-blue group-hover:text-white text-gray-800 rounded-lg px-3 py-2 font-bold text-xl mb-1 transition-colors shadow-sm">
+                              {courseDates[1].day}
+                            </div>
+                            <div className="text-xs text-gray-500 font-semibold uppercase">{courseDates[1].month}</div>
+                            <div className="text-xs text-gray-400">{courseDates[1].year}</div>
+                          </div>
+                        </div>
+                      )}
 
-                  {/* Third date */}
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3 border-2 border-gray-200 hover:border-zvyky-blue transition-colors group">
-                    <div className="flex flex-col items-center">
-                      <div className="bg-white group-hover:bg-zvyky-blue group-hover:text-white text-gray-800 rounded-lg px-3 py-2 font-bold text-xl mb-1 transition-colors shadow-sm">
-                        28
-                      </div>
-                      <div className="text-xs text-gray-500 font-semibold uppercase">Január</div>
-                      <div className="text-xs text-gray-400">2026</div>
+                      {/* Third date */}
+                      {courseDates[2] && (
+                        <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3 border-2 border-gray-200 hover:border-zvyky-blue transition-colors group">
+                          <div className="flex flex-col items-center">
+                            <div className="bg-white group-hover:bg-zvyky-blue group-hover:text-white text-gray-800 rounded-lg px-3 py-2 font-bold text-xl mb-1 transition-colors shadow-sm">
+                              {courseDates[2].day}
+                            </div>
+                            <div className="text-xs text-gray-500 font-semibold uppercase">{courseDates[2].month}</div>
+                            <div className="text-xs text-gray-400">{courseDates[2].year}</div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                </div>
+                  </>
+                )}
               </div>
 
               {/* Additional info */}

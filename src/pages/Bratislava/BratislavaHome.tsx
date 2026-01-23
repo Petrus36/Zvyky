@@ -8,9 +8,6 @@ const BratislavaHome = () => {
   // Function to get upcoming course dates based on current date
   const getUpcomingDates = () => {
     const today = new Date();
-    const currentDate = today.getDate();
-    const currentMonth = today.getMonth(); // 0 = January, 1 = February, etc.
-    const currentYear = today.getFullYear();
 
     // Define all available dates for 2026
     const allDates = [

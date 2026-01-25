@@ -120,7 +120,7 @@ const BratislavaHome = () => {
                         <div className="text-xs font-semibold uppercase tracking-wide">Študent</div>
                       </div>
                       <div className="text-center text-xl font-bold">1050 €</div>
-                      <div className="text-xs opacity-90 text-center">so preukazom</div>
+                      <div className="text-xs opacity-90 text-center">s preukazom</div>
                     </div> */}
                   {/* </div> */}
 

@@ -23,9 +23,23 @@ const BratislavaKurzBDetail = () => {
                 <div className="text-sm font-semibold uppercase tracking-wide mb-2 text-gray-600">Prax</div>
                 <div className="text-3xl md:text-4xl font-bold text-black">38 hodín</div>
               </div>
+              {/*
               <div className="bg-gradient-to-br from-zvyky-blue to-blue-600 rounded-2xl shadow-lg p-6 text-white">
                 <div className="text-sm font-semibold uppercase tracking-wide mb-2 text-white/90">Cena</div>
                 <div className="text-3xl md:text-4xl font-bold">1111 €</div>
+              </div>
+              */}
+
+              {/* NEW: Welcome Price Offer - Third Box */}
+              <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl shadow-lg p-6 text-white relative overflow-hidden">
+                <div className="text-sm font-semibold uppercase tracking-wide mb-2 text-white/90 flex items-center gap-1">
+                  <span>⚡</span>
+                  <span>Limitovaná ponuka</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <div className="text-lg font-bold line-through opacity-75">1111 €</div>
+                  <div className="text-3xl md:text-4xl font-bold">999 €</div>
+                </div>
               </div>
             </div>
           </div>

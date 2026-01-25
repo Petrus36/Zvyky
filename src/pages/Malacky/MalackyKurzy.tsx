@@ -60,7 +60,7 @@ const MalackyKurzy = () => {
                       <div className="text-xs font-semibold uppercase tracking-wide">Študent</div>
                     </div>
                     <div className="text-center text-xl font-bold">1050 €</div>
-                    <div className="text-xs opacity-90 text-center">so preukazom</div>
+                    <div className="text-xs opacity-90 text-center">s preukazom</div>
                   </div>
                 </div>
                 
@@ -142,7 +142,7 @@ const MalackyKurzy = () => {
               <h3 className="text-sm font-bold mb-3 font-inter">Pre držiteľa vodičského oprávnenia B (60min)</h3>
               <div className="flex-grow"></div>
               <Link
-                to="/malacky/kurzy/a1"
+                to="/malacky/kontakt"
                 className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert mb-3 self-start inline-block"
               >
                 Viac informácií
@@ -167,7 +167,7 @@ const MalackyKurzy = () => {
                 Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€)
               </p>
               <Link
-                to="/malacky/kurzy/a1"
+                to="/malacky/kontakt"
                 className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert mb-3 self-start inline-block"
               >
                 Viac informácií

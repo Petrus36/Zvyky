@@ -1,6 +1,34 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+declare global {
+  interface Window {
+    dataLayer: unknown[]
+    gtag: (...args: unknown[]) => void
+  }
+}
+
+const GA_MEASUREMENT_ID = 'AW-17961357460'
+
 const LocationSelector = () => {
+  useEffect(() => {
+    // Google tag (gtag.js)
+    window.dataLayer = window.dataLayer || []
+    window.gtag = function gtag() {
+      window.dataLayer.push(arguments)
+    }
+    window.gtag('js', new Date())
+
+    const script = document.createElement('script')
+    script.async = true
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
+    document.head.appendChild(script)
+
+    script.onload = () => {
+      window.gtag('config', GA_MEASUREMENT_ID)
+    }
+  }, [])
+
   return (
     <div 
       className="min-h-screen w-full bg-cover bg-center bg-no-repeat flex flex-col items-center justify-start pt-20 pb-8 sm:pt-24 md:justify-center md:pt-0 px-4 sm:px-6 md:px-8"

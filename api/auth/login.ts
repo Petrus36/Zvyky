@@ -34,7 +34,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.json({ token })
   } catch (err) {
     console.error('Login error:', err)
-    return res.status(500).json({ error: 'Server error' })
+    const message = err instanceof Error ? err.message : String(err)
+    return res.status(500).json({ error: 'Server error', detail: message })
   }
 }
 

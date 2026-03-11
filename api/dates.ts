@@ -15,7 +15,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.json(dates)
     } catch (err) {
       console.error('GET dates error:', err)
-      return res.json([])
+      const message = err instanceof Error ? err.message : String(err)
+      return res.status(500).json({ error: 'Failed to fetch dates', detail: message })
     }
   }
 

@@ -1,4 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { CourseDataProvider } from './context/CourseDataContext'
 import { Analytics } from '@vercel/analytics/react'
 import ScrollToTop from './components/ScrollToTop'
 import MalackyNavigation from './components/MalackyNavigation'
@@ -19,9 +21,21 @@ import KurzA2Detail from './pages/Malacky/KurzA2Detail'
 import MalackyVozidla from './pages/Malacky/MalackyVozidla'
 import MalackyDokumenty from './pages/Malacky/MalackyDokumenty'
 import MalackyKontakt from './pages/Malacky/MalackyKontakt'
+import AdminLogin from './pages/Admin/AdminLogin'
+import AdminDashboard from './pages/Admin/AdminDashboard'
+import AdminRegistrations from './pages/Admin/AdminRegistrations'
+import AdminPrices from './pages/Admin/AdminPrices'
+import AdminDates from './pages/Admin/AdminDates'
+import Registracia from './pages/Registracia'
+
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const isLoggedIn = localStorage.getItem('admin_token')
+  return isLoggedIn ? <>{children}</> : <Navigate to="/admin/login" replace />
+}
 
 function App() {
   return (
+    <CourseDataProvider>
     <Router>
       <ScrollToTop />
       <Routes>
@@ -84,6 +98,16 @@ function App() {
             <BratislavaNavigation />
             <main className="flex-grow">
               <BratislavaKontakt />
+            </main>
+            <Footer />
+          </div>
+        } />
+
+        <Route path="/bratislava/registracia" element={
+          <div className="min-h-screen flex flex-col">
+            <BratislavaNavigation />
+            <main className="flex-grow">
+              <Registracia location="Bratislava" />
             </main>
             <Footer />
           </div>
@@ -169,9 +193,27 @@ function App() {
             <Footer />
           </div>
         } />
+
+        <Route path="/malacky/registracia" element={
+          <div className="min-h-screen flex flex-col">
+            <MalackyNavigation />
+            <main className="flex-grow">
+              <Registracia location="Malacky" />
+            </main>
+            <Footer />
+          </div>
+        } />
+
+        {/* Admin Routes */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+        <Route path="/admin/registracie" element={<ProtectedRoute><AdminRegistrations /></ProtectedRoute>} />
+        <Route path="/admin/ceny" element={<ProtectedRoute><AdminPrices /></ProtectedRoute>} />
+        <Route path="/admin/terminy" element={<ProtectedRoute><AdminDates /></ProtectedRoute>} />
       </Routes>
       <Analytics />
     </Router>
+    </CourseDataProvider>
   )
 }
 

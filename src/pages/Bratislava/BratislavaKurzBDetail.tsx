@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { useCourseData } from '../../context/CourseDataContext'
 
 const BratislavaKurzBDetail = () => {
+  const { prices } = useCourseData()
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Content Section */}
@@ -37,8 +39,8 @@ const BratislavaKurzBDetail = () => {
                   <span>Limitovaná ponuka</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <div className="text-lg font-bold line-through opacity-75">1111 €</div>
-                  <div className="text-3xl md:text-4xl font-bold">999 €</div>
+                  <div className="text-lg font-bold line-through opacity-75">{prices.bratislava_B_standard} €</div>
+                  <div className="text-3xl md:text-4xl font-bold">{prices.bratislava_B_welcome} €</div>
                 </div>
               </div>
             </div>

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { useCourseData } from '../../context/CourseDataContext'
 
 const KurzA1Detail = () => {
+  const { prices } = useCourseData()
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Content Section */}
@@ -25,7 +27,7 @@ const KurzA1Detail = () => {
               </div>
               <div className="bg-gradient-to-br from-zvyky-blue to-blue-600 rounded-2xl shadow-lg p-6 text-white">
                 <div className="text-sm font-semibold uppercase tracking-wide mb-2 text-white/90">Cena</div>
-                <div className="text-3xl md:text-4xl font-bold">999 €</div>
+                <div className="text-3xl md:text-4xl font-bold">{prices.malacky_A1} €</div>
               </div>
             </div>
           </div>

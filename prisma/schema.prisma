@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Stores flat price keys like "malacky_B_standard", "bratislava_B_welcome", etc.
+model CoursePrice {
+  key       String   @id
+  price     Int
+  updatedAt DateTime @updatedAt
+}
+
+model CourseDate {
+  id          String   @id @default(cuid())
+  location    String
+  courseType  String
+  startDate   String
+  description String   @default("")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Registration {
+  id                        String   @id @default(cuid())
+  email                     String
+  phone                     String
+  location                  String
+  courseType                String
+  hasFirstAid               Boolean  @default(false)
+  firstAidDate              String?
+  preferredStartDate        String?
+  notes                     String?
+  status                    String   @default("pending")
+  meno                      String
+  priezvisko                String
+  rodnePriezvisko           String
+  datumNarodenia            String
+  miestoNarodenia           String
+  rodneCislo                String
+  ulica                     String
+  mesto                     String
+  psc                       String
+  drzitelSkupiny            String   @default("")
+  drzitelPreukazu           String   @default("")
+  ziadamSkupiny             String
+  zakladNa                  String
+  podpisVMeste              String
+  podpisDna                 String
+  isMinor                   Boolean  @default(false)
+  zakonnyZastupcaMeno       String?
+  zakonnyZastupcaPriezvisko String?
+  zakonnyZastupcaRodneCislo String?
+  zakonnyZastupcaSkupina    String?
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+}
+

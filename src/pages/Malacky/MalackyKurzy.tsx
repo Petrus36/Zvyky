@@ -1,6 +1,29 @@
 import { Link } from 'react-router-dom'
+import { useCourseData } from '../../context/CourseDataContext'
+
+const formatDate = (d: string) =>
+  new Date(d).toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' })
+
+const courseLabels: Record<string, string> = {
+  B:  'Kurz B',
+  A1: 'Kurz A1',
+  A2: 'Kurz A2',
+}
+
+const courseColors: Record<string, string> = {
+  B:  '#00AEEF',
+  A1: '#116584',
+  A2: '#0369a1',
+}
 
 const MalackyKurzy = () => {
+  const { prices, dates } = useCourseData()
+
+  // Active upcoming dates for Malacky, sorted by date
+  const upcomingDates = dates
+    .filter(d => d.location === 'Malacky' && d.isActive)
+    .sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Main Content */}
@@ -36,7 +59,7 @@ const MalackyKurzy = () => {
                   {/* Standard Price */}
                   <div className="text-center py-3 border-2 border-gray-200 rounded-xl hover:border-zvyky-blue transition-colors">
                     <div className="text-xs text-gray-600 font-semibold uppercase tracking-wide mb-1">Štandardná cena</div>
-                    <div className="text-2xl font-bold text-black">1111 €</div>
+                    <div className="text-2xl font-bold text-black">{prices.malacky_B_standard} €</div>
                   </div>
                   
                   {/* Bring a Friend */}
@@ -47,7 +70,7 @@ const MalackyKurzy = () => {
                       </svg>
                       <div className="text-xs font-semibold uppercase tracking-wide">Priveď priateľa</div>
                     </div>
-                    <div className="text-center text-xl font-bold">1061 €</div>
+                    <div className="text-center text-xl font-bold">{prices.malacky_B_friend} €</div>
                     <div className="text-xs opacity-90 text-center">/ osobu</div>
                   </div>
                   
@@ -59,17 +82,19 @@ const MalackyKurzy = () => {
                       </svg>
                       <div className="text-xs font-semibold uppercase tracking-wide">Študent</div>
                     </div>
-                    <div className="text-center text-xl font-bold">1050 €</div>
+                    <div className="text-center text-xl font-bold">{prices.malacky_B_student} €</div>
                     <div className="text-xs opacity-90 text-center">s preukazom</div>
                   </div>
                 </div>
                 
-                <Link
-                  to="/malacky/kurzy/b"
-                  className="w-full bg-zvyky-blue hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition-all font-semibold uppercase text-sm font-albert shadow-lg hover:shadow-xl text-center block"
-                >
-                  Viac informácií
-                </Link>
+                <div className="flex gap-3">
+                  <Link
+                    to="/malacky/kurzy/b"
+                    className="flex-1 bg-zvyky-blue hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition-all font-semibold uppercase text-sm font-albert shadow-lg hover:shadow-xl text-center block"
+                  >
+                    Viac informácií
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -92,13 +117,15 @@ const MalackyKurzy = () => {
               <p className="text-gray-600 mb-4 text-xs leading-relaxed flex-grow">
                 Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
               </p>
-              <Link
-                to="/malacky/kurzy/a1"
-                className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert mb-3 self-start inline-block"
-              >
-                Viac informácií
-              </Link>
-              <div className="text-2xl font-bold text-black">999 €</div>
+              <div className="flex gap-2 mb-3">
+                <Link
+                  to="/malacky/kurzy/a1"
+                  className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert inline-block"
+                >
+                  Viac informácií
+                </Link>
+              </div>
+              <div className="text-2xl font-bold text-black">{prices.malacky_A1} €</div>
             </div>
           </div>
 
@@ -117,13 +144,15 @@ const MalackyKurzy = () => {
               <p className="text-gray-600 mb-4 text-xs leading-relaxed flex-grow">
                 Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
               </p>
-              <Link
-                to="/malacky/kurzy/a2"
-                className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert mb-3 self-start inline-block"
-              >
-                Viac informácií
-              </Link>
-              <div className="text-2xl font-bold text-black">999 €</div>
+              <div className="flex gap-2 mb-3">
+                <Link
+                  to="/malacky/kurzy/a2"
+                  className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert inline-block"
+                >
+                  Viac informácií
+                </Link>
+              </div>
+              <div className="text-2xl font-bold text-black">{prices.malacky_A2} €</div>
             </div>
           </div>
 
@@ -141,13 +170,15 @@ const MalackyKurzy = () => {
               <h2 className="text-2xl font-extrabold mb-2 font-inter">Kondičné jazdy</h2>
               <h3 className="text-sm font-bold mb-3 font-inter">Pre držiteľa vodičského oprávnenia B (60min)</h3>
               <div className="flex-grow"></div>
-              <Link
-                to="/malacky/kontakt"
-                className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert mb-3 self-start inline-block"
-              >
-                Viac informácií
-              </Link>
-              <div className="text-2xl font-bold text-black">45 €</div>
+              <div className="flex gap-2 mb-3">
+                <Link
+                  to="/malacky/kontakt"
+                  className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert inline-block"
+                >
+                  Viac informácií
+                </Link>
+              </div>
+              <div className="text-2xl font-bold text-black">{prices.malacky_kondicne} €</div>
             </div>
           </div>
 
@@ -166,16 +197,102 @@ const MalackyKurzy = () => {
               <p className="text-gray-600 mb-4 text-xs leading-relaxed flex-grow">
                 Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€)
               </p>
-              <Link
-                to="/malacky/kontakt"
-                className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert mb-3 self-start inline-block"
-              >
-                Viac informácií
-              </Link>
-              <div className="text-2xl font-bold text-black">1555 €</div>
+              <div className="flex gap-2 mb-3">
+                <Link
+                  to="/malacky/kontakt"
+                  className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert inline-block"
+                >
+                  Viac informácií
+                </Link>
+              </div>
+              <div className="text-2xl font-bold text-black">{prices.malacky_osobitny} €</div>
             </div>
           </div>
         </div>
+
+        {/* ── Upcoming Course Start Dates Section ── */}
+        {upcomingDates.length > 0 && (
+          <div className="max-w-5xl mx-auto mt-20">
+            {/* Section header */}
+            <div className="flex items-center gap-4 mb-8">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black font-inter">
+                Najbližšie začiatky kurzov
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {upcomingDates.map(d => (
+                <div
+                  key={d.id}
+                  className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  {/* Coloured top bar */}
+                  <div className="h-1.5 w-full" style={{ backgroundColor: courseColors[d.courseType] ?? '#00AEEF' }} />
+
+                  <div className="p-5">
+                    {/* Course badge + label */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div
+                        className="w-11 h-11 rounded-xl flex items-center justify-center text-white font-extrabold text-base flex-shrink-0"
+                        style={{ backgroundColor: courseColors[d.courseType] ?? '#00AEEF' }}
+                      >
+                        {d.courseType}
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900 text-sm leading-tight">
+                          {courseLabels[d.courseType] ?? d.courseType}
+                        </p>
+                        {d.description && (
+                          <p className="text-xs text-gray-400 mt-0.5">{d.description}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Date */}
+                    <div className="flex items-center gap-2 bg-gray-50 rounded-xl px-4 py-3">
+                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        style={{ color: courseColors[d.courseType] ?? '#00AEEF' }}>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span className="text-sm font-semibold text-gray-700">
+                        {formatDate(d.startDate)}
+                      </span>
+                    </div>
+
+                    {/* CTAs */}
+                    <div className="mt-4 flex gap-2">
+                      <Link
+                        to={d.courseType === 'B' ? '/malacky/kurzy/b' : d.courseType === 'A1' ? '/malacky/kurzy/a1' : '/malacky/kurzy/a2'}
+                        className="flex-1 text-center block text-xs font-semibold uppercase py-2.5 rounded-xl border-2 transition-all hover:text-white"
+                        style={{ borderColor: courseColors[d.courseType] ?? '#00AEEF', color: courseColors[d.courseType] ?? '#00AEEF' }}
+                        onMouseEnter={e => {
+                          const el = e.currentTarget as HTMLElement
+                          el.style.backgroundColor = courseColors[d.courseType] ?? '#00AEEF'
+                          el.style.color = '#fff'
+                        }}
+                        onMouseLeave={e => {
+                          const el = e.currentTarget as HTMLElement
+                          el.style.backgroundColor = 'transparent'
+                          el.style.color = courseColors[d.courseType] ?? '#00AEEF'
+                        }}
+                      >
+                        Info
+                      </Link>
+                      <Link
+                        to={`/malacky/registracia?kurz=${d.courseType}`}
+                        className="flex-1 text-center block text-xs font-semibold uppercase py-2.5 rounded-xl text-white transition-all hover:opacity-90"
+                        style={{ backgroundColor: courseColors[d.courseType] ?? '#00AEEF' }}
+                      >
+                        Prihlásiť
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

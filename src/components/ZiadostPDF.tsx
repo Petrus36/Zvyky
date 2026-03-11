@@ -1,4 +1,3 @@
-import React from 'react'
 import { Document, Page, View, Text, StyleSheet, Font } from '@react-pdf/renderer'
 
 // Register Roboto font (supports all Slovak characters)

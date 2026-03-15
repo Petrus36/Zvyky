@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { timingSafeEqual } from 'crypto'
-import jwt from 'jsonwebtoken'
+import { SignJWT } from 'jose'
 import { setCors } from '../lib/auth'
 
 // ── Hardcoded admin credentials ──────────────────────────────────────────────
@@ -49,8 +49,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(401).json({ error: 'Invalid credentials' })
     }
 
-    const secret = process.env.JWT_SECRET || 'zvyky_secret_change_in_production'
-    const token = jwt.sign({ adminId: 'admin' }, secret, { expiresIn: '7d' })
+    const secret = new TextEncoder().encode(
+      process.env.JWT_SECRET || 'zvyky_secret_change_in_production'
+    )
+    const token = await new SignJWT({ adminId: 'admin' })
+      .setProtectedHeader({ alg: 'HS256' })
+      .setIssuedAt()
+      .setExpirationTime('7d')
+      .sign(secret)
 
     return res.json({ token })
   } catch (err) {

@@ -34,8 +34,13 @@ const AdminLogin = () => {
       if (!res.ok) {
         let detail = ''
         try {
-          const errBody = await res.json() as { error?: string; detail?: string }
-          detail = errBody.detail || errBody.error || ''
+          const raw = await res.text()
+          try {
+            const errBody = JSON.parse(raw) as Record<string, unknown>
+            detail = String(errBody.detail ?? errBody.message ?? errBody.error ?? raw).slice(0, 300)
+          } catch {
+            detail = raw.replace(/<[^>]*>/g, '').trim().slice(0, 300)
+          }
         } catch { /* ignore */ }
         setError(`Chyba servera (${res.status})${detail ? ': ' + detail : ''}`)
         return

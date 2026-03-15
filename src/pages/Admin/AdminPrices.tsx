@@ -123,9 +123,15 @@ const PriceCard = ({
 
 const AdminPrices = () => {
   const { prices, setPrices } = useCourseData()
+  const [saveError, setSaveError] = React.useState('')
 
-  const handleSave = (key: keyof Prices, val: number) => {
-    setPrices({ ...prices, [key]: val })
+  const handleSave = async (key: keyof Prices, val: number) => {
+    setSaveError('')
+    try {
+      await setPrices({ ...prices, [key]: val })
+    } catch (err) {
+      setSaveError(err instanceof Error ? err.message : 'Chyba pri ukladaní ceny.')
+    }
   }
 
   return (
@@ -137,6 +143,16 @@ const AdminPrices = () => {
           <h2 className="text-xl font-bold text-gray-900">Ceny kurzov</h2>
           <p className="text-sm text-gray-500 mt-0.5">Zmeny sa okamžite prejavia na webe</p>
         </div>
+
+        {/* Error banner */}
+        {saveError && (
+          <div className="flex items-center gap-3 bg-red-50 border border-red-200 rounded-2xl p-4 text-red-700 text-sm font-medium">
+            <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            Chyba pri ukladaní: {saveError}
+          </div>
+        )}
 
         {/* Info banner */}
         <div className="flex items-start gap-3 bg-sky-50 border border-sky-200 rounded-2xl p-4">

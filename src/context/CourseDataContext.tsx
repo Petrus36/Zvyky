@@ -139,11 +139,15 @@ export const CourseDataProvider = ({ children }: { children: React.ReactNode }) 
   // ── Prices ─────────────────────────────────────────────────────────────────
   const setPrices = async (p: Prices) => {
     setPricesState(p) // optimistic update
-    await fetch('/api/prices', {
+    const res = await fetch('/api/prices', {
       method:  'PUT',
       headers: { 'Content-Type': 'application/json', ...authHeader() },
       body:    JSON.stringify(p),
     })
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({})) as { error?: string; detail?: string }
+      throw new Error(body.detail ?? body.error ?? `Server error ${res.status}`)
+    }
   }
 
   // ── Dates ──────────────────────────────────────────────────────────────────
@@ -153,6 +157,10 @@ export const CourseDataProvider = ({ children }: { children: React.ReactNode }) 
       headers: { 'Content-Type': 'application/json', ...authHeader() },
       body:    JSON.stringify(d),
     })
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({})) as { error?: string; detail?: string }
+      throw new Error(body.detail ?? body.error ?? `Server error ${res.status}`)
+    }
     const newDate = (await res.json()) as CourseDate
     setDatesState(prev => [...prev, newDate])
   }
@@ -160,19 +168,27 @@ export const CourseDataProvider = ({ children }: { children: React.ReactNode }) 
   const updateDate = async (id: string, d: Partial<Omit<CourseDate, 'id'>>) => {
     // Optimistic
     setDatesState(prev => prev.map(date => date.id === id ? { ...date, ...d } : date))
-    await fetch(`/api/dates/${id}`, {
+    const res = await fetch(`/api/dates/${id}`, {
       method:  'PUT',
       headers: { 'Content-Type': 'application/json', ...authHeader() },
       body:    JSON.stringify(d),
     })
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({})) as { error?: string; detail?: string }
+      throw new Error(body.detail ?? body.error ?? `Server error ${res.status}`)
+    }
   }
 
   const deleteDate = async (id: string) => {
     setDatesState(prev => prev.filter(d => d.id !== id)) // optimistic
-    await fetch(`/api/dates/${id}`, {
+    const res = await fetch(`/api/dates/${id}`, {
       method:  'DELETE',
       headers: authHeader(),
     })
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({})) as { error?: string; detail?: string }
+      throw new Error(body.detail ?? body.error ?? `Server error ${res.status}`)
+    }
   }
 
   // ── Registrations ──────────────────────────────────────────────────────────

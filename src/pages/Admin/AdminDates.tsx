@@ -23,6 +23,7 @@ const AdminDates = () => {
   const [form,           setForm]           = React.useState<Omit<CourseDate, 'id'>>(emptyForm)
   const [deleteConfirm,  setDeleteConfirm]  = React.useState<string | null>(null)
   const [submitting,     setSubmitting]     = React.useState(false)
+  const [formError,      setFormError]      = React.useState('')
 
   const openAdd = () => {
     setEditingId(null)
@@ -39,6 +40,7 @@ const AdminDates = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
+    setFormError('')
     try {
       if (editingId) {
         await updateDate(editingId, form)
@@ -46,6 +48,8 @@ const AdminDates = () => {
         await addDate(form)
       }
       setShowForm(false)
+    } catch (err) {
+      setFormError(err instanceof Error ? err.message : 'Chyba pri ukladaní termínu.')
     } finally {
       setSubmitting(false)
     }
@@ -213,6 +217,14 @@ const AdminDates = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
+              {formError && (
+                <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm font-medium">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  {formError}
+                </div>
+              )}
               <div className="grid grid-cols-2 gap-4">
                 {/* Location */}
                 <div>

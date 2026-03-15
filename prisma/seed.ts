@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
@@ -19,15 +18,6 @@ const DEFAULT_PRICES: Record<string, number> = {
 
 async function main() {
   console.log('🌱 Seeding database...')
-
-  // ── Admin user ──────────────────────────────────────────────────────────────
-  const hash = await bcrypt.hash('zvyky2025', 10)
-  await prisma.admin.upsert({
-    where:  { username: 'admin' },
-    update: {},
-    create: { username: 'admin', password: hash },
-  })
-  console.log('✅ Admin user: admin / zvyky2025')
 
   // ── Default prices ──────────────────────────────────────────────────────────
   for (const [key, price] of Object.entries(DEFAULT_PRICES)) {
@@ -68,4 +58,5 @@ main()
     process.exit(1)
   })
   .finally(() => prisma.$disconnect())
+
 

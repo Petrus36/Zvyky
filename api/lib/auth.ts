@@ -29,3 +29,4 @@ export function setCors(res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 }
 
+

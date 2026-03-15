@@ -29,6 +29,15 @@ function spaFallback() {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), spaFallback()],
+  server: {
+    proxy: {
+      // Forward /api calls to the Vercel dev server (vercel dev runs on port 3000)
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+    },
+  },
 })
 
 

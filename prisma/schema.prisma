@@ -8,14 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Admin {
-  id        String   @id @default(cuid())
-  username  String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 // Stores flat price keys like "malacky_B_standard", "bratislava_B_welcome", etc.
 model CoursePrice {
   key       String   @id

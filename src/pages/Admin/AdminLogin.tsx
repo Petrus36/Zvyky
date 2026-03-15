@@ -21,16 +21,31 @@ const AdminLogin = () => {
         body:    JSON.stringify({ username, password }),
       })
 
-      if (!res.ok) {
+      if (res.status === 401) {
         setError('Nesprávne meno alebo heslo.')
+        return
+      }
+
+      if (res.status === 404) {
+        setError('API nenájdené (404). Skontrolujte deploy na Vercel.')
+        return
+      }
+
+      if (!res.ok) {
+        let detail = ''
+        try {
+          const errBody = await res.json() as { error?: string; detail?: string }
+          detail = errBody.detail || errBody.error || ''
+        } catch { /* ignore */ }
+        setError(`Chyba servera (${res.status})${detail ? ': ' + detail : ''}`)
         return
       }
 
       const { token } = await res.json() as { token: string }
       localStorage.setItem('admin_token', token)
       navigate('/admin')
-    } catch {
-      setError('Chyba servera. Skúste to znova.')
+    } catch (err) {
+      setError('Sieťová chyba – API nie je dostupné. ' + (err instanceof Error ? err.message : ''))
     } finally {
       setLoading(false)
     }

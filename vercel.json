@@ -3,8 +3,7 @@
   "outputDirectory": "dist",
   "functions": {
     "api/**/*.ts": {
-      "maxDuration": 15,
-      "includeFiles": "node_modules/.prisma/client/**"
+      "maxDuration": 15
     }
   },
   "rewrites": [

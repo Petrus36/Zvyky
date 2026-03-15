@@ -1,14 +1,18 @@
 import { PrismaClient } from '@prisma/client'
+import { PrismaNeon } from '@prisma/adapter-neon'
+import { neon } from '@neondatabase/serverless'
 
-// Cache the Prisma client on globalThis so that:
-// - In development: hot-reload doesn't create dozens of connections
-// - In production serverless: warm function instances reuse the same client
+function createPrismaClient() {
+  const connectionString = process.env.DATABASE_URL!
+  const sql    = neon(connectionString)
+  const adapter = new PrismaNeon(sql)
+  return new PrismaClient({ adapter, log: ['error'] })
+}
+
+// Cache the client so warm serverless instances reuse the same connection
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient }
 
 export const prisma =
-  globalForPrisma.prisma ??
-  new PrismaClient({
-    log: ['error'],
-  })
+  globalForPrisma.prisma ?? createPrismaClient()
 
 globalForPrisma.prisma = prisma

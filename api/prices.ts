@@ -38,17 +38,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // PUT — admin only, bulk update
   if (req.method === 'PUT') {
     return requireAuth(req, res, async () => {
-      const updates = req.body as Record<string, number>
-      await Promise.all(
-        Object.entries(updates).map(([key, price]) =>
-          prisma.coursePrice.upsert({
-            where:  { key },
-            update: { price: Number(price) },
-            create: { key, price: Number(price) },
-          })
+      try {
+        const updates = req.body as Record<string, number>
+        await Promise.all(
+          Object.entries(updates).map(([key, price]) =>
+            prisma.coursePrice.upsert({
+              where:  { key },
+              update: { price: Number(price) },
+              create: { key, price: Number(price) },
+            })
+          )
         )
-      )
-      return res.json({ ok: true })
+        return res.json({ ok: true })
+      } catch (err) {
+        console.error('PUT prices error:', err)
+        const detail = err instanceof Error ? err.message : String(err)
+        return res.status(500).json({ error: 'Failed to save prices', detail })
+      }
     })
   }
 

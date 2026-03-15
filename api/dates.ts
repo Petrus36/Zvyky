@@ -23,24 +23,30 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // POST — admin only, add new date
   if (req.method === 'POST') {
     return requireAuth(req, res, async () => {
-      const { location, courseType, startDate, description, isActive } = req.body as {
-        location: string
-        courseType: string
-        startDate: string
-        description?: string
-        isActive?: boolean
-      }
+      try {
+        const { location, courseType, startDate, description, isActive } = req.body as {
+          location: string
+          courseType: string
+          startDate: string
+          description?: string
+          isActive?: boolean
+        }
 
-      const date = await prisma.courseDate.create({
-        data: {
-          location,
-          courseType,
-          startDate,
-          description: description || '',
-          isActive: isActive ?? true,
-        },
-      })
-      return res.status(201).json(date)
+        const date = await prisma.courseDate.create({
+          data: {
+            location,
+            courseType,
+            startDate,
+            description: description || '',
+            isActive: isActive ?? true,
+          },
+        })
+        return res.status(201).json(date)
+      } catch (err) {
+        console.error('POST dates error:', err)
+        const detail = err instanceof Error ? err.message : String(err)
+        return res.status(500).json({ error: 'Failed to create date', detail })
+      }
     })
   }
 

@@ -1,21 +1,23 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { createHmac } from 'crypto'
-import { setCors } from '../lib/auth'
 
 const ADMIN_USERNAME = 'admin'
 const ADMIN_PASSWORD = 'zvyky2025'
 
-function createJWT(payload: Record<string, unknown>, secret: string): string {
-  const header  = Buffer.from(JSON.stringify({ alg: 'HS256', typ: 'JWT' })).toString('base64url')
-  const now     = Math.floor(Date.now() / 1000)
-  const body    = Buffer.from(JSON.stringify({ ...payload, iat: now, exp: now + 7 * 24 * 60 * 60 })).toString('base64url')
-  const data      = `${header}.${body}`
-  const signature = createHmac('sha256', secret).update(data).digest('base64url')
-  return `${data}.${signature}`
+/** base64url without relying on Node 14.18+ encoding name */
+function b64url(str: string): string {
+  return Buffer.from(str)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=/g, '')
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  setCors(res)
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+
   if (req.method === 'OPTIONS') return res.status(200).end()
   if (req.method !== 'POST') return res.status(405).end()
 
@@ -34,9 +36,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(401).json({ error: 'Invalid credentials' })
     }
 
+    const now    = Math.floor(Date.now() / 1000)
+    const header = b64url(JSON.stringify({ alg: 'HS256', typ: 'JWT' }))
+    const claims = b64url(JSON.stringify({ adminId: 'admin', iat: now, exp: now + 604800 }))
+    const data   = `${header}.${claims}`
     const secret = process.env.JWT_SECRET || 'zvyky_secret_change_in_production'
-    const token  = createJWT({ adminId: 'admin' }, secret)
-    return res.json({ token })
+    const sig    = createHmac('sha256', secret).update(data).digest('base64')
+      .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '')
+
+    return res.json({ token: `${data}.${sig}` })
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err)
     return res.status(500).json({ error: 'Server error', detail: message })

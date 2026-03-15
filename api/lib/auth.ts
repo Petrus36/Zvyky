@@ -9,13 +9,15 @@ function verifyJWT(token: string, secret: string): boolean {
 
     // Verify signature
     const data     = `${parts[0]}.${parts[1]}`
-    const expected = createHmac('sha256', secret).update(data).digest('base64url')
+    const expected = createHmac('sha256', secret).update(data).digest('base64')
+      .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '')
     const actual   = parts[2]
     if (expected.length !== actual.length) return false
     if (!timingSafeEqual(Buffer.from(expected), Buffer.from(actual))) return false
 
-    // Verify expiry
-    const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString()) as Record<string, unknown>
+    // Verify expiry — decode base64url by padding back to standard base64
+    const padded  = parts[1].replace(/-/g, '+').replace(/_/g, '/') + '=='.slice(0, (4 - parts[1].length % 4) % 4)
+    const payload = JSON.parse(Buffer.from(padded, 'base64').toString()) as Record<string, unknown>
     if (typeof payload.exp === 'number' && payload.exp < Math.floor(Date.now() / 1000)) return false
 
     return true

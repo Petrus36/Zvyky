@@ -1,15 +1,13 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { timingSafeEqual } from 'crypto'
-import { SignJWT } from 'jose'
+import { timingSafeEqual, createHmac } from 'crypto'
 import { setCors } from '../lib/auth'
 
 // ── Hardcoded admin credentials ──────────────────────────────────────────────
-// Change these values directly here whenever you need to update login info.
 const ADMIN_USERNAME = 'admin'
 const ADMIN_PASSWORD = 'zvyky2025'
 // ─────────────────────────────────────────────────────────────────────────────
 
-/** Constant-time string comparison to prevent timing attacks */
+/** Constant-time string comparison */
 function safeEqual(a: string, b: string): boolean {
   try {
     const bufA = Buffer.from(a)
@@ -19,6 +17,16 @@ function safeEqual(a: string, b: string): boolean {
   } catch {
     return false
   }
+}
+
+/** Build a signed HS256 JWT using only Node.js crypto (no npm package needed) */
+function createJWT(payload: Record<string, unknown>, secret: string): string {
+  const header  = Buffer.from(JSON.stringify({ alg: 'HS256', typ: 'JWT' })).toString('base64url')
+  const now     = Math.floor(Date.now() / 1000)
+  const body    = Buffer.from(JSON.stringify({ ...payload, iat: now, exp: now + 7 * 24 * 60 * 60 })).toString('base64url')
+  const data      = `${header}.${body}`
+  const signature = createHmac('sha256', secret).update(data).digest('base64url')
+  return `${data}.${signature}`
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -42,22 +50,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'Missing credentials' })
     }
 
-    const usernameOk = safeEqual(username, ADMIN_USERNAME)
-    const passwordOk = safeEqual(password, ADMIN_PASSWORD)
-
-    if (!usernameOk || !passwordOk) {
+    if (!safeEqual(username, ADMIN_USERNAME) || !safeEqual(password, ADMIN_PASSWORD)) {
       return res.status(401).json({ error: 'Invalid credentials' })
     }
 
-    const secret = new TextEncoder().encode(
-      process.env.JWT_SECRET || 'zvyky_secret_change_in_production'
-    )
-    const token = await new SignJWT({ adminId: 'admin' })
-      .setProtectedHeader({ alg: 'HS256' })
-      .setIssuedAt()
-      .setExpirationTime('7d')
-      .sign(secret)
-
+    const secret = process.env.JWT_SECRET || 'zvyky_secret_change_in_production'
+    const token  = createJWT({ adminId: 'admin' }, secret)
     return res.json({ token })
   } catch (err) {
     console.error('Login error:', err)

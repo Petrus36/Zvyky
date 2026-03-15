@@ -21,8 +21,14 @@ const AdminLogin = () => {
         body:    JSON.stringify({ username, password }),
       })
 
-      if (!res.ok) {
+      if (res.status === 401) {
         setError('Nesprávne meno alebo heslo.')
+        return
+      }
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({})) as { detail?: string }
+        setError(`Chyba ${res.status}${body.detail ? ': ' + body.detail : ''}`)
         return
       }
 

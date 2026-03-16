@@ -39,9 +39,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'PUT') {
     return requireAuth(req, res, async () => {
       try {
-        const updates = req.body as Record<string, number>
+        const updates = req.body
+        if (!updates || typeof updates !== 'object') {
+          return res.status(400).json({ error: 'Invalid body', detail: 'Expected JSON object of price keys and values' })
+        }
         await Promise.all(
-          Object.entries(updates).map(([key, price]) =>
+          Object.entries(updates as Record<string, number>).map(([key, price]) =>
             prisma.coursePrice.upsert({
               where:  { key },
               update: { price: Number(price) },

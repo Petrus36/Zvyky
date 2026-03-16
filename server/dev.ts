@@ -6,6 +6,7 @@ import { createServer, IncomingMessage, ServerResponse } from 'node:http'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
 import loginHandler         from '../api/auth/login.js'
+import healthHandler        from '../api/health.js'
 import pricesHandler        from '../api/prices.js'
 import datesHandler         from '../api/dates.js'
 import datesIdHandler       from '../api/dates/[id].js'
@@ -16,6 +17,7 @@ type Handler = (req: VercelRequest, res: VercelResponse) => unknown
 
 const ROUTES: Array<{ re: RegExp; keys: string[]; handler: Handler }> = [
   { re: /^\/api\/auth\/login$/,            keys: [],     handler: loginHandler },
+  { re: /^\/api\/health$/,                 keys: [],     handler: healthHandler },
   { re: /^\/api\/prices$/,                 keys: [],     handler: pricesHandler },
   { re: /^\/api\/dates$/,                  keys: [],     handler: datesHandler },
   { re: /^\/api\/dates\/([^/]+)$/,         keys: ['id'], handler: datesIdHandler },

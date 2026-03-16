@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 import { PrismaNeon } from '@prisma/adapter-neon'
 import { Pool, neonConfig } from '@neondatabase/serverless'
 
-// Required for Node.js environments (Vercel serverless uses Node.js, not Edge)
+// Required for Node.js (Vercel serverless uses Node.js, not Edge)
 import ws from 'ws'
 neonConfig.webSocketConstructor = ws
 

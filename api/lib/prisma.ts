@@ -7,7 +7,13 @@ import ws from 'ws'
 neonConfig.webSocketConstructor = ws
 
 function createPrismaClient() {
-  const pool    = new Pool({ connectionString: process.env.DATABASE_URL })
+  const connectionString = process.env.DATABASE_URL
+  if (!connectionString) {
+    throw new Error(
+      'DATABASE_URL is not set. On Vercel: add it in Project Settings → Environment Variables, then redeploy.'
+    )
+  }
+  const pool    = new Pool({ connectionString })
   const adapter = new PrismaNeon(pool)
   return new PrismaClient({ adapter, log: ['error'] })
 }

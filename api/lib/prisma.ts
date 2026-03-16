@@ -1,11 +1,8 @@
 import { PrismaClient } from '@prisma/client'
-import { PrismaNeon } from '@prisma/adapter-neon'
-import { Pool, neonConfig } from '@neondatabase/serverless'
+import { PrismaNeonHTTP } from '@prisma/adapter-neon'
+import { neon } from '@neondatabase/serverless'
 
-// Required for Node.js (Vercel serverless uses Node.js, not Edge)
-import ws from 'ws'
-neonConfig.webSocketConstructor = ws
-
+// HTTP driver — no WebSocket/ws needed, works reliably on Vercel serverless
 function createPrismaClient() {
   const connectionString = process.env.DATABASE_URL
   if (!connectionString) {
@@ -13,8 +10,8 @@ function createPrismaClient() {
       'DATABASE_URL is not set. On Vercel: add it in Project Settings → Environment Variables, then redeploy.'
     )
   }
-  const pool    = new Pool({ connectionString })
-  const adapter = new PrismaNeon(pool)
+  const sql    = neon(connectionString)
+  const adapter = new PrismaNeonHTTP(sql)
   return new PrismaClient({ adapter, log: ['error'] })
 }
 

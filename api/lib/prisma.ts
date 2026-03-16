@@ -1,9 +1,10 @@
 import { PrismaClient } from '@prisma/client'
 import { PrismaNeon } from '@prisma/adapter-neon'
 import { Pool, neonConfig } from '@neondatabase/serverless'
-import ws from 'ws'
 
-neonConfig.webSocketConstructor = ws
+// Use undici WebSocket (Node 18+ built-in) — more reliable on Vercel than 'ws'
+import { WebSocket } from 'undici'
+neonConfig.webSocketConstructor = WebSocket as unknown as typeof globalThis.WebSocket
 
 /** Create a fresh Prisma client with Pool. Call pool.end() when done (required for Vercel serverless). */
 export async function withPrisma<T>(

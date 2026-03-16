@@ -74,3 +74,4 @@ CREATE TABLE "Registration" (
 CREATE UNIQUE INDEX "Admin_username_key" ON "Admin"("username");
 
 
+

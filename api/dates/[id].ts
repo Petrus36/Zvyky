@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { prisma } from '../lib/prisma'
+import { withPrisma } from '../lib/prisma'
 import { requireAuth, setCors } from '../lib/auth'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -19,10 +19,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         isActive?: boolean
       }
 
-      const updated = await prisma.courseDate.update({
-        where: { id },
-        data: { location, courseType, startDate, description, isActive },
-      })
+      const updated = await withPrisma(prisma =>
+        prisma.courseDate.update({
+          where: { id },
+          data: { location, courseType, startDate, description, isActive },
+        })
+      )
       return res.json(updated)
     })
   }
@@ -30,7 +32,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // DELETE — admin only
   if (req.method === 'DELETE') {
     return requireAuth(req, res, async () => {
-      await prisma.courseDate.delete({ where: { id } })
+      await withPrisma(prisma => prisma.courseDate.delete({ where: { id } }))
       return res.json({ ok: true })
     })
   }

@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { prisma } from './lib/prisma'
+import { withPrisma } from './lib/prisma'
 import { requireAuth, setCors } from './lib/auth'
 
 const DEFAULT_PRICES: Record<string, number> = {
@@ -23,7 +23,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // GET — public, anyone can read current prices
   if (req.method === 'GET') {
     try {
-      const rows = await prisma.coursePrice.findMany()
+      const rows = await withPrisma(prisma => prisma.coursePrice.findMany())
       const prices = { ...DEFAULT_PRICES }
       for (const row of rows) {
         prices[row.key] = row.price
@@ -43,15 +43,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         if (!updates || typeof updates !== 'object') {
           return res.status(400).json({ error: 'Invalid body', detail: 'Expected JSON object of price keys and values' })
         }
-        await Promise.all(
-          Object.entries(updates as Record<string, number>).map(([key, price]) =>
-            prisma.coursePrice.upsert({
-              where:  { key },
-              update: { price: Number(price) },
-              create: { key, price: Number(price) },
-            })
+        await withPrisma(async prisma => {
+          await Promise.all(
+            Object.entries(updates as Record<string, number>).map(([key, price]) =>
+              prisma.coursePrice.upsert({
+                where:  { key },
+                update: { price: Number(price) },
+                create: { key, price: Number(price) },
+              })
+            )
           )
-        )
+        })
         return res.json({ ok: true })
       } catch (err) {
         console.error('PUT prices error:', err)

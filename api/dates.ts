@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { prisma } from './lib/prisma'
+import { withPrisma } from './lib/prisma'
 import { requireAuth, setCors } from './lib/auth'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -9,9 +9,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // GET — public, shows upcoming course dates on the website
   if (req.method === 'GET') {
     try {
-      const dates = await prisma.courseDate.findMany({
-        orderBy: { startDate: 'asc' },
-      })
+      const dates = await withPrisma(prisma =>
+        prisma.courseDate.findMany({ orderBy: { startDate: 'asc' } })
+      )
       return res.json(dates)
     } catch (err) {
       console.error('GET dates error:', err)
@@ -32,7 +32,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           isActive?: boolean
         }
 
-        const date = await prisma.courseDate.create({
+        const date = await withPrisma(prisma => prisma.courseDate.create({
           data: {
             location,
             courseType,
@@ -40,7 +40,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             description: description || '',
             isActive: isActive ?? true,
           },
-        })
+        }))
         return res.status(201).json(date)
       } catch (err) {
         console.error('POST dates error:', err)

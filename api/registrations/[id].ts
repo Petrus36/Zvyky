@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { prisma } from '../lib/prisma'
+import { withPrisma } from '../lib/prisma'
 import { requireAuth, setCors } from '../lib/auth'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -12,10 +12,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'PUT') {
     return requireAuth(req, res, async () => {
       const { status } = req.body as { status: string }
-      const updated = await prisma.registration.update({
-        where: { id },
-        data:  { status },
-      })
+      const updated = await withPrisma(prisma =>
+        prisma.registration.update({
+          where: { id },
+          data:  { status },
+        })
+      )
       return res.json({
         ...updated,
         createdAt: updated.createdAt.toISOString().split('T')[0],

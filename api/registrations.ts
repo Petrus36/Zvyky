@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { prisma } from './lib/prisma'
+import { withPrisma } from './lib/prisma'
 import { requireAuth, setCors } from './lib/auth'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -9,9 +9,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // GET — admin only, list all registrations
   if (req.method === 'GET') {
     return requireAuth(req, res, async () => {
-      const registrations = await prisma.registration.findMany({
-        orderBy: { createdAt: 'desc' },
-      })
+      const registrations = await withPrisma(prisma =>
+        prisma.registration.findMany({ orderBy: { createdAt: 'desc' } })
+      )
       return res.json(
         registrations.map(r => ({
           ...r,
@@ -26,7 +26,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     try {
       const d = req.body as Record<string, unknown>
 
-      const registration = await prisma.registration.create({
+      const registration = await withPrisma(prisma => prisma.registration.create({
         data: {
           email:             String(d.email),
           phone:             String(d.phone),
@@ -58,7 +58,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           zakonnyZastupcaSkupina:    d.zakonnyZastupcaSkupina ? String(d.zakonnyZastupcaSkupina) : null,
           status: 'pending',
         },
-      })
+      }))
       return res.status(201).json({ id: registration.id })
     } catch (err) {
       console.error('POST registration error:', err)

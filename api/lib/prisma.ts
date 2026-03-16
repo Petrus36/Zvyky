@@ -1,23 +1,26 @@
 import { PrismaClient } from '@prisma/client'
-import { PrismaNeonHTTP } from '@prisma/adapter-neon'
-import { neon } from '@neondatabase/serverless'
+import { PrismaNeon } from '@prisma/adapter-neon'
+import { Pool, neonConfig } from '@neondatabase/serverless'
+import ws from 'ws'
 
-// HTTP driver — no WebSocket/ws needed, works reliably on Vercel serverless
-function createPrismaClient() {
+neonConfig.webSocketConstructor = ws
+
+/** Create a fresh Prisma client with Pool. Call pool.end() when done (required for Vercel serverless). */
+export async function withPrisma<T>(
+  fn: (prisma: PrismaClient) => Promise<T>
+): Promise<T> {
   const connectionString = process.env.DATABASE_URL
   if (!connectionString) {
     throw new Error(
       'DATABASE_URL is not set. On Vercel: add it in Project Settings → Environment Variables, then redeploy.'
     )
   }
-  const sql    = neon(connectionString)
-  const adapter = new PrismaNeonHTTP(sql)
-  return new PrismaClient({ adapter, log: ['error'] })
+  const pool = new Pool({ connectionString })
+  const adapter = new PrismaNeon(pool)
+  const prisma = new PrismaClient({ adapter, log: ['error'] })
+  try {
+    return await fn(prisma)
+  } finally {
+    await pool.end()
+  }
 }
-
-const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient }
-
-export const prisma =
-  globalForPrisma.prisma ?? createPrismaClient()
-
-globalForPrisma.prisma = prisma

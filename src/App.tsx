@@ -27,6 +27,7 @@ import AdminRegistrations from './pages/Admin/AdminRegistrations'
 import AdminPrices from './pages/Admin/AdminPrices'
 import AdminDates from './pages/Admin/AdminDates'
 import Registracia from './pages/Registracia'
+import TreeSocial from './pages/TreeSocial'
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isLoggedIn = localStorage.getItem('admin_token')
@@ -41,6 +42,9 @@ function App() {
       <Routes>
         {/* Location Selector - No Nav/Footer */}
         <Route path="/" element={<LocationSelector />} />
+
+        {/* Hidden social landing — no nav/footer */}
+        <Route path="/tree" element={<TreeSocial />} />
         
         {/* Bratislava Routes with BratislavaNavigation and Footer */}
         <Route path="/bratislava" element={

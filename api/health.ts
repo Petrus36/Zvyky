@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { withPrisma } from './lib/prisma'
+import { withPrisma } from './lib/prisma.js'
 
 /** GET /api/health — diagnose DB connection (no auth) */
 export default async function handler(req: VercelRequest, res: VercelResponse) {

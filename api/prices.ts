@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { withPrisma } from './lib/prisma'
-import { requireAuth, setCors } from './lib/auth'
+import { withPrisma } from './lib/prisma.js'
+import { requireAuth, setCors } from './lib/auth.js'
 
 const DEFAULT_PRICES: Record<string, number> = {
   malacky_B_standard:    1111,

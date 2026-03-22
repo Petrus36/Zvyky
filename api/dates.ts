@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { withPrisma } from './lib/prisma'
-import { requireAuth, setCors } from './lib/auth'
+import { withPrisma } from './lib/prisma.js'
+import { requireAuth, setCors } from './lib/auth.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setCors(res)

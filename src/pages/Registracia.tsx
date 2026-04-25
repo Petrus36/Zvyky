@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
-import { useCourseData } from '../context/CourseDataContext'
+import { useCourseData, type Registration } from '../context/CourseDataContext'
+import { fillZiadostPDF } from '../utils/fillZiadostPDF'
 
 interface Props {
   location: 'Malacky' | 'Bratislava'
@@ -88,6 +89,60 @@ const Input = ({
   </div>
 )
 
+function formToPdfRegistration(
+  form: FormState,
+  loc: 'Malacky' | 'Bratislava',
+  podpisDna: string,
+): Registration {
+  return {
+    id: 'local',
+    email: form.email,
+    phone: form.phone,
+    location: loc,
+    courseType: form.courseType,
+    hasFirstAid: form.hasFirstAid,
+    firstAidDate: form.firstAidDate || undefined,
+    preferredStartDate: form.preferredStartDate || undefined,
+    notes: form.notes || undefined,
+    status: 'pending',
+    createdAt: new Date().toISOString().split('T')[0],
+    meno: form.meno,
+    priezvisko: form.priezvisko,
+    rodnePriezvisko: form.rodnePriezvisko,
+    datumNarodenia: form.datumNarodenia,
+    miestoNarodenia: form.miestoNarodenia,
+    rodneCislo: form.rodneCislo,
+    ulica: form.ulica,
+    mesto: form.mesto,
+    psc: form.psc,
+    drzitelSkupiny: form.drzitelSkupiny,
+    drzitelPreukazu: form.drzitelPreukazu,
+    ziadamSkupiny: form.courseType,
+    zakladNa: form.zakladNa,
+    podpisVMeste: form.podpisVMeste,
+    podpisDna,
+    isMinor: form.isMinor,
+    zakonnyZastupcaMeno: form.isMinor ? form.zakonnyZastupcaMeno : undefined,
+    zakonnyZastupcaPriezvisko: form.isMinor ? form.zakonnyZastupcaPriezvisko : undefined,
+    zakonnyZastupcaRodneCislo: form.isMinor ? form.zakonnyZastupcaRodneCislo : undefined,
+    zakonnyZastupcaSkupina: form.isMinor ? form.zakonnyZastupcaSkupina : undefined,
+  }
+}
+
+function triggerPdfDownload(blob: Blob, priezvisko: string) {
+  const safe = (priezvisko || 'ziadost').replace(/[^\w\u00C0-\u024f-]/gi, '_').slice(0, 80)
+  const filename = `ziadost-vodicke-opravnenie-${safe}.pdf`
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = filename
+  a.rel = 'noopener'
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  URL.revokeObjectURL(url)
+}
+
 const SectionTitle = ({ icon, title, subtitle }: { icon: string; title: string; subtitle?: string }) => (
   <div className="flex items-center gap-3 mb-5">
     <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-sky-50 flex-shrink-0">{icon}</div>
@@ -107,6 +162,9 @@ const Registracia = ({ location }: Props) => {
   const [form, setForm] = useState<FormState>({ ...BLANK, courseType: initialCourse, podpisVMeste: location })
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [pdfLoading, setPdfLoading] = useState(false)
+  /** Dátum podpisu pri odoslaní — rovnaký pri opakovanom stiahnutí PDF */
+  const [submittedPodpisDna, setSubmittedPodpisDna] = useState<string | null>(null)
   const [errors, setErrors] = useState<Record<string, string>>({})
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -140,6 +198,7 @@ const Registracia = ({ location }: Props) => {
     if (Object.keys(errs).length > 0) { setErrors(errs); window.scrollTo({ top: 0, behavior: 'smooth' }); return }
 
     setSubmitting(true)
+    const podpisDna = new Date().toLocaleDateString('sk-SK')
     try {
       await addRegistration({
         email: form.email,
@@ -164,13 +223,21 @@ const Registracia = ({ location }: Props) => {
         ziadamSkupiny: form.courseType,
         zakladNa: form.zakladNa,
         podpisVMeste: form.podpisVMeste,
-        podpisDna: new Date().toLocaleDateString('sk-SK'),
+        podpisDna,
         isMinor: form.isMinor,
         zakonnyZastupcaMeno:       form.isMinor ? form.zakonnyZastupcaMeno       : undefined,
         zakonnyZastupcaPriezvisko: form.isMinor ? form.zakonnyZastupcaPriezvisko : undefined,
         zakonnyZastupcaRodneCislo: form.isMinor ? form.zakonnyZastupcaRodneCislo : undefined,
         zakonnyZastupcaSkupina:    form.isMinor ? form.zakonnyZastupcaSkupina    : undefined,
       })
+      try {
+        const reg = formToPdfRegistration(form, location, podpisDna)
+        const blob = await fillZiadostPDF(reg)
+        triggerPdfDownload(blob, form.priezvisko)
+      } catch (pdfErr) {
+        console.error('PDF generation failed:', pdfErr)
+      }
+      setSubmittedPodpisDna(podpisDna)
       setSubmitted(true)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch {
@@ -183,25 +250,76 @@ const Registracia = ({ location }: Props) => {
   const baseHref = location === 'Malacky' ? '/malacky' : '/bratislava'
   const accent = '#00AEEF'
 
+  const handleDownloadPdfAgain = async () => {
+    setPdfLoading(true)
+    try {
+      const podpisDna = submittedPodpisDna ?? new Date().toLocaleDateString('sk-SK')
+      const reg = formToPdfRegistration(form, location, podpisDna)
+      const blob = await fillZiadostPDF(reg)
+      triggerPdfDownload(blob, form.priezvisko)
+    } catch (e) {
+      console.error(e)
+      alert('Nepodarilo sa vygenerovať PDF. Skúste znova.')
+    } finally {
+      setPdfLoading(false)
+    }
+  }
+
   // ── Success screen ──
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-        <div className="bg-white rounded-3xl shadow-xl max-w-md w-full p-10 text-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-10">
+        <div className="bg-white rounded-3xl shadow-xl max-w-lg w-full p-8 sm:p-10 text-center">
           <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl"
             style={{ backgroundColor: '#e0f7ff' }}>✓</div>
           <h2 className="text-2xl font-bold text-gray-900 mb-3">Prihlásenie odoslané!</h2>
           <p className="text-gray-500 text-sm mb-2">
             Vaša žiadosť o kurz <strong>{form.courseType}</strong> v <strong>{location}</strong> bola úspešne odoslaná.
           </p>
-          <p className="text-gray-400 text-xs mb-8">
-            Budeme Vás kontaktovať na adrese <strong>{form.email}</strong> alebo telefonicky.
+          <p className="text-gray-400 text-xs mb-6">
+            Budeme Vás kontaktovať na <strong>{form.email}</strong> alebo telefonicky s ďalšími informáciami k kurzu.
           </p>
-          <Link to={`${baseHref}/kurzy`}
-            className="inline-block px-8 py-3 rounded-xl text-white font-semibold text-sm transition-opacity hover:opacity-90"
-            style={{ backgroundColor: accent }}>
-            Späť na kurzy
-          </Link>
+
+          <div
+            className="mb-6 text-left rounded-2xl overflow-hidden ring-2 ring-amber-400/90 border border-amber-500 shadow-md"
+          >
+            <div className="bg-amber-500 px-3 py-2 flex items-center gap-2">
+              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/95 text-amber-600 shrink-0" aria-hidden>
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+              </span>
+              <span className="text-white font-extrabold text-xs sm:text-sm uppercase tracking-wide">Povinné</span>
+            </div>
+            <p className="px-3 sm:px-4 py-3 sm:py-4 text-sm sm:text-base font-bold text-gray-900 leading-snug bg-amber-50/90 text-balance">
+              Potvrdenie od lekára musí obsahovať{' '}
+              <span className="text-amber-800 underline decoration-amber-500 decoration-2 underline-offset-2">5 pečiatok</span> a{' '}
+              <span className="text-amber-800 underline decoration-amber-500 decoration-2 underline-offset-2">5 podpisov</span>
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <button
+              type="button"
+              disabled={pdfLoading}
+              onClick={handleDownloadPdfAgain}
+              className="w-full px-8 py-3 rounded-xl border-2 font-semibold text-sm transition-opacity hover:opacity-90 disabled:opacity-60"
+              style={{ borderColor: accent, color: accent }}
+            >
+              {pdfLoading ? 'Pripravujem PDF…' : 'Stiahnuť PDF formulár'}
+            </button>
+            <Link to={`${baseHref}/kurzy`}
+              className="inline-block px-8 py-3 rounded-xl text-white font-semibold text-sm transition-opacity hover:opacity-90"
+              style={{ backgroundColor: accent }}>
+              Späť na kurzy
+            </Link>
+            <Link
+              to={`${baseHref}/dokumenty`}
+              className="text-sm text-amber-700 font-semibold hover:underline"
+            >
+              Viac o dokumentoch a vzore potvrdenia →
+            </Link>
+          </div>
         </div>
       </div>
     )

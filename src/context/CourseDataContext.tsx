@@ -116,9 +116,9 @@ export const CourseDataProvider = ({ children }: { children: React.ReactNode }) 
       fetch('/api/prices').then(r => r.json()).catch(() => DEFAULT_PRICES),
       fetch('/api/dates').then(r => r.json()).catch(() => []),
     ])
-      .then(([pricesData, datesData]: [Partial<Prices>, CourseDate[]]) => {
+      .then(([pricesData, datesData]: [Partial<Prices>, unknown]) => {
         setPricesState({ ...DEFAULT_PRICES, ...(pricesData as Prices) })
-        setDatesState(datesData)
+        setDatesState(Array.isArray(datesData) ? datesData : [])
       })
       .finally(() => setLoading(false))
   }, [])
@@ -193,7 +193,7 @@ export const CourseDataProvider = ({ children }: { children: React.ReactNode }) 
 
   // ── Registrations ──────────────────────────────────────────────────────────
   const addRegistration = async (r: Omit<Registration, 'id' | 'createdAt' | 'status'>) => {
-    const podpisDna = new Date().toLocaleDateString('sk-SK')
+    const podpisDna = r.podpisDna ?? new Date().toLocaleDateString('sk-SK')
     const res = await fetch('/api/registrations', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },

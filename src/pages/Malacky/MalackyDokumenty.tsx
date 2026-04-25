@@ -104,6 +104,38 @@ const MalackyDokumenty = () => {
               <p className="text-sm text-gray-600">Platný pre rok 2025</p>
             </div>
           </div>
+
+          {/* Potvrdenie od lekára — povinné požiadavky (výrazne zvýraznené) */}
+          <div className="mt-16 flex justify-center px-1">
+            <div
+              className="w-full max-w-2xl rounded-3xl overflow-hidden text-center
+                ring-4 ring-amber-400/80 shadow-2xl shadow-amber-900/15
+                border-2 border-amber-500 bg-gradient-to-b from-amber-50 to-white"
+            >
+              <div className="bg-amber-500 px-4 py-3 sm:py-3.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/95 text-amber-600 shadow-sm shrink-0" aria-hidden>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                </span>
+                <p className="text-white font-extrabold text-sm sm:text-base uppercase tracking-wide text-balance">
+                  Povinné – skontrolujte pred odovzdaním
+                </p>
+              </div>
+              <div className="p-4 sm:p-6 bg-amber-50/60">
+                <img
+                  src="/images/dokument.png"
+                  alt="Príklad: potvrdenie od lekára"
+                  className="w-full h-auto max-h-[70vh] object-contain mx-auto rounded-lg ring-1 ring-amber-200/80 shadow-md"
+                />
+              </div>
+              <div className="px-4 sm:px-8 py-6 sm:py-7 border-t-2 border-amber-200 bg-amber-100/50">
+                <p className="text-gray-900 text-base sm:text-lg md:text-xl font-bold leading-snug text-balance">
+                  Potvrdenie od lekára musí obsahovať <span className="text-amber-800 underline decoration-amber-500 decoration-2 underline-offset-2">5 pečiatok</span> a <span className="text-amber-800 underline decoration-amber-500 decoration-2 underline-offset-2">5 podpisov</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

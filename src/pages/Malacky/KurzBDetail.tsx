@@ -137,7 +137,7 @@ const KurzBDetail = () => {
           <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl shadow-lg p-6 md:p-8 mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-black mb-4 font-inter">Kurz prvej pomoci</h3>
             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-              Pred skúškou musíš absolvovať aj kurz prvej pomoci. Nemusíš sa však o to starať samostatne - kurz prvej pomoci je už zahrnutý v celkovej cene kurzu.
+              Pred skúškou musíš absolvovať aj kurz prvej pomoci s ktorým ti radi pomôžeme.
             </p>
           </div>
 

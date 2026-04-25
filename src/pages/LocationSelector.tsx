@@ -15,6 +15,8 @@ const LocationSelector = () => {
     // Google tag (gtag.js)
     window.dataLayer = window.dataLayer || []
     window.gtag = function gtag() {
+      // gtag.js / data layer queue the native Arguments object (not a plain array)
+      // eslint-disable-next-line prefer-rest-params -- GTM/GA4 expects `arguments` here
       window.dataLayer.push(arguments)
     }
     window.gtag('js', new Date())

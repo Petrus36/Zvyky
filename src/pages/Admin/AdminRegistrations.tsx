@@ -124,7 +124,7 @@ const printZiadost = (r: Registration) => {
     <p class="fn">** Ak rodné číslo nie je pridelené, uveďte dátum narodenia.</p>
   </div>
 
-  <script>window.onload = () => window.print();<\/script>
+  <script>window.onload = () => window.print();` + '</script>' + `
 </body>
 </html>`
 

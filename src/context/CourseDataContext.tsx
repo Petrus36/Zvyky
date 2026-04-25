@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 
+/* Context pattern: types, constants, provider, and useCourseData hook in one module. */
+/* eslint-disable react-refresh/only-export-components -- see above */
 // ─── Price types ───────────────────────────────────────────────────────────────
 export interface Prices {
   // Malacky

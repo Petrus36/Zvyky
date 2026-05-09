@@ -47,6 +47,15 @@ const MalackyHome = () => {
               >
                 Kurzy
               </Link>
+              <Link
+                to="/malacky/registracia"
+                className="relative bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white uppercase font-semibold px-3 sm:px-8 md:px-10 py-3 md:py-4 text-base sm:text-lg md:text-xl rounded-lg transition-all font-karla text-center w-1/2 sm:w-auto shadow-lg hover:shadow-2xl"
+              >
+                Online Prihláška
+                <span className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-yellow-400 text-black text-[10px] sm:text-xs font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-md animate-pulse">
+                  Novinka
+                </span>
+              </Link>
             </div>
           </div>
         </div>
@@ -267,16 +276,51 @@ const MalackyHome = () => {
 
       {/* Gift Voucher Section */}
       <section className="mb-8 md:mb-16 py-6 md:py-12">
-        <div className="max-w-full sm:max-w-xl md:max-w-2xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6 md:mb-8 font-inter">
-            Darujte darčekovú poukážku
-          </h2>
-          <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-            Hľadáte originálny darček? Potešte svojich blízkych praktickým darčekom, 
-            ktorý im otvorí dvere k novej životnej etape. S našimi darčekovými 
-            poukážkami na kurz riadenia darujete nezabudnuteľný zážitok a šancu na 
-            nezávislosť na cestách.
-          </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+          {/* Left - Text content */}
+          <div className="max-w-full sm:max-w-xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6 md:mb-8 font-inter">
+              Darujte darčekovú poukážku
+            </h2>
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-6">
+              Hľadáte originálny darček? Potešte svojich blízkych praktickým darčekom,
+              ktorý im otvorí dvere k novej životnej etape. S našimi darčekovými
+              poukážkami na kurz riadenia darujete nezabudnuteľný zážitok a šancu na
+              nezávislosť na cestách.
+            </p>
+
+            <h3 className="text-base sm:text-lg font-bold text-black mb-3 font-inter">
+              Ideálne pre vodičov, ktorí si chcú:
+            </h3>
+            <ul className="text-gray-700 text-base sm:text-lg space-y-1 mb-8 list-none">
+              <li>- obnoviť vodičské zručnosti</li>
+              <li>- získať väčšiu istotu za volantom</li>
+              <li>- prekonať strach z jazdy</li>
+            </ul>
+
+            <Link
+              to="/malacky/kontakt"
+              className="inline-block bg-zvyky-blue hover:opacity-90 text-white uppercase font-bold px-10 py-3 rounded-full transition-all text-base tracking-wide shadow-md"
+            >
+              Objednať
+            </Link>
+          </div>
+
+          {/* Right - Stacked voucher images */}
+          <div className="relative w-full h-[340px] sm:h-[420px] md:h-[480px] lg:h-[520px]">
+            {/* Back card - inside spread (landscape) - text on right stays visible */}
+            <img
+              src="/images/IMG_GIFT.png"
+              alt="Darčekový poukaz - vnútorná strana"
+              className="absolute top-[55%] left-[56%] w-[78%] max-w-[520px] -translate-x-1/2 -translate-y-1/2 -rotate-6 rounded-lg shadow-2xl"
+            />
+            {/* Front card - cover (portrait) - overlapping upper-left corner of back card */}
+            <img
+              src="/images/IMG_GIFT2.png"
+              alt="Darčekový poukaz - obálka"
+              className="absolute top-[28%] left-[26%] w-[48%] max-w-[300px] -translate-x-1/2 -translate-y-1/2 rotate-6 rounded-lg shadow-2xl"
+            />
+          </div>
         </div>
       </section>
 

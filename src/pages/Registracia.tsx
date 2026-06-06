@@ -561,7 +561,8 @@ const Registracia = ({ location }: Props) => {
           {/* ── GDPR notice ── */}
           <div className="bg-sky-50 border border-sky-100 rounded-2xl p-4 text-xs text-sky-700 leading-relaxed">
             <strong>Ochrana osobných údajov:</strong> Vaše osobné údaje sú spracúvané výlučne za účelom prihlásenia
-            na vodičský kurz v súlade s GDPR. Údaje nebudú poskytnuté tretím stranám.
+            na vodičský kurz v súlade s GDPR. Údaje nebudú poskytnuté tretím stranám. Odoslaním registrácie
+            súhlasíte so spracovaním osobných údajov.
           </div>
 
           {/* ── Submit error ── */}

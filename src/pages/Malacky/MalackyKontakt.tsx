@@ -1,4 +1,5 @@
 import React from 'react'
+import FiremneUdajeSection from '../../components/FiremneUdajeSection'
 
 const MalackyKontakt = () => {
   const [isMapOpen, setIsMapOpen] = React.useState(false)
@@ -132,6 +133,8 @@ const MalackyKontakt = () => {
             </div>
           </div>
         </div>
+
+        <FiremneUdajeSection />
 
         {/* CTA Section */}
         <div className="max-w-4xl mx-auto bg-gradient-to-r from-zvyky-blue to-teal-600 rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white">

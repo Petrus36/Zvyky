@@ -149,8 +149,28 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-6 pt-6 text-center text-xs sm:text-sm">
-          <p>&copy; 2025 Zvyky s.r.o. Všetky práva vyhradené.</p>
+        <div className="border-t border-white/20 mt-6 pt-6 text-center text-xs sm:text-sm space-y-3">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            <Link
+              to={isBratislava ? '/bratislava/gdpr' : '/malacky/gdpr'}
+              className="hover:text-white/80 transition-colors underline underline-offset-2"
+            >
+              GDPR
+            </Link>
+            <Link
+              to={isBratislava ? '/bratislava/cookies' : '/malacky/cookies'}
+              className="hover:text-white/80 transition-colors underline underline-offset-2"
+            >
+              Cookies
+            </Link>
+            <Link
+              to={isBratislava ? '/bratislava/obchodne-podmienky' : '/malacky/obchodne-podmienky'}
+              className="hover:text-white/80 transition-colors underline underline-offset-2"
+            >
+              Obchodné podmienky
+            </Link>
+          </div>
+          <p>&copy; 2025 SFP - SERVICE FOR PEOPLE, s. r. o. Všetky práva vyhradené.</p>
         </div>
       </div>
     </footer>

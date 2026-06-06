@@ -6,6 +6,11 @@ import ScrollToTop from './components/ScrollToTop'
 import MalackyNavigation from './components/MalackyNavigation'
 import BratislavaNavigation from './components/BratislavaNavigation'
 import Footer from './components/Footer'
+import LocationLayout from './components/LocationLayout'
+import CookieConsent from './components/CookieConsent'
+import Gdpr from './pages/Legal/Gdpr'
+import Cookies from './pages/Legal/Cookies'
+import ObchodnePodmienky from './pages/Legal/ObchodnePodmienky'
 import LocationSelector from './pages/LocationSelector'
 import BratislavaHome from './pages/Bratislava/BratislavaHome'
 import BratislavaKurzy from './pages/Bratislava/BratislavaKurzy'
@@ -116,6 +121,10 @@ function App() {
             <Footer />
           </div>
         } />
+
+        <Route path="/bratislava/gdpr" element={<LocationLayout location="bratislava"><Gdpr /></LocationLayout>} />
+        <Route path="/bratislava/cookies" element={<LocationLayout location="bratislava"><Cookies /></LocationLayout>} />
+        <Route path="/bratislava/obchodne-podmienky" element={<LocationLayout location="bratislava"><ObchodnePodmienky /></LocationLayout>} />
         
         {/* Malacky Routes with MalackyNavigation and Footer */}
         <Route path="/malacky" element={
@@ -208,6 +217,10 @@ function App() {
           </div>
         } />
 
+        <Route path="/malacky/gdpr" element={<LocationLayout location="malacky"><Gdpr /></LocationLayout>} />
+        <Route path="/malacky/cookies" element={<LocationLayout location="malacky"><Cookies /></LocationLayout>} />
+        <Route path="/malacky/obchodne-podmienky" element={<LocationLayout location="malacky"><ObchodnePodmienky /></LocationLayout>} />
+
         {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
@@ -216,6 +229,7 @@ function App() {
         <Route path="/admin/terminy" element={<ProtectedRoute><AdminDates /></ProtectedRoute>} />
       </Routes>
       <Analytics />
+      <CookieConsent />
     </Router>
     </CourseDataProvider>
   )

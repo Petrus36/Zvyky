@@ -9,7 +9,7 @@
   },
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
+      "source": "/((?!api/|favicon\\.ico|favicon\\.svg|favicon.*\\.png|apple-touch-icon\\.png|site\\.webmanifest|images/).*)",
       "destination": "/index.html"
     }
   ]

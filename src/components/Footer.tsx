@@ -163,12 +163,6 @@ const Footer = () => {
             >
               Cookies
             </Link>
-            <Link
-              to={isBratislava ? '/bratislava/obchodne-podmienky' : '/malacky/obchodne-podmienky'}
-              className="hover:text-white/80 transition-colors underline underline-offset-2"
-            >
-              Obchodné podmienky
-            </Link>
           </div>
           <p>&copy; 2025 SFP - SERVICE FOR PEOPLE, s. r. o. Všetky práva vyhradené.</p>
         </div>

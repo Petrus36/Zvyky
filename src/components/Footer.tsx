@@ -158,6 +158,12 @@ const Footer = () => {
               GDPR
             </Link>
             <Link
+              to={isBratislava ? '/bratislava/fakturacne-udaje' : '/malacky/fakturacne-udaje'}
+              className="hover:text-white/80 transition-colors underline underline-offset-2"
+            >
+              Fakturačné údaje
+            </Link>
+            <Link
               to={isBratislava ? '/bratislava/cookies' : '/malacky/cookies'}
               className="hover:text-white/80 transition-colors underline underline-offset-2"
             >

@@ -19,6 +19,12 @@ const IconIdCard = () => (
   </svg>
 )
 
+const IconBuilding = () => (
+  <svg className="w-6 h-6 text-zvyky-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+  </svg>
+)
+
 type InfoRowProps = {
   icon: React.ReactNode
   children: React.ReactNode
@@ -31,14 +37,25 @@ const InfoRow = ({ icon, children }: InfoRowProps) => (
   </div>
 )
 
-const FiremneUdajeSection = () => (
+type FiremneUdajeSectionProps = {
+  showTitle?: boolean
+  title?: string
+}
+
+const FiremneUdajeSection = ({ showTitle = true, title = 'FIREMNÉ ÚDAJE' }: FiremneUdajeSectionProps) => (
   <div className="max-w-2xl mx-auto mb-12">
     <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100">
-      <h2 className="text-2xl md:text-3xl font-bold text-black mb-10 font-inter text-center">
-        FIREMNÉ ÚDAJE
-      </h2>
+      {showTitle && (
+        <h2 className="text-2xl md:text-3xl font-bold text-black mb-10 font-inter text-center">
+          {title}
+        </h2>
+      )}
 
       <div className="space-y-6 max-w-md mx-auto">
+        <InfoRow icon={<IconBuilding />}>
+          SERVICE FOR PEOPLE, s. r. o.
+        </InfoRow>
+
         <InfoRow icon={<IconPerson />}>
           Zdenek Vykydal
         </InfoRow>
@@ -53,6 +70,10 @@ const FiremneUdajeSection = () => (
 
         <InfoRow icon={<IconIdCard />}>
           DIČ: 2120380240
+        </InfoRow>
+
+        <InfoRow icon={<IconIdCard />}>
+          IČ DPH: SK2120380240
         </InfoRow>
       </div>
 

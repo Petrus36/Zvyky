@@ -11,6 +11,7 @@ import CookieConsent from './components/CookieConsent'
 import Gdpr from './pages/Legal/Gdpr'
 import Cookies from './pages/Legal/Cookies'
 import ObchodnePodmienky from './pages/Legal/ObchodnePodmienky'
+import FakturacneUdaje from './pages/Legal/FakturacneUdaje'
 import LocationSelector from './pages/LocationSelector'
 import BratislavaHome from './pages/Bratislava/BratislavaHome'
 import BratislavaKurzy from './pages/Bratislava/BratislavaKurzy'
@@ -123,6 +124,7 @@ function App() {
         } />
 
         <Route path="/bratislava/gdpr" element={<LocationLayout location="bratislava"><Gdpr /></LocationLayout>} />
+        <Route path="/bratislava/fakturacne-udaje" element={<LocationLayout location="bratislava"><FakturacneUdaje /></LocationLayout>} />
         <Route path="/bratislava/cookies" element={<LocationLayout location="bratislava"><Cookies /></LocationLayout>} />
         <Route path="/bratislava/obchodne-podmienky" element={<LocationLayout location="bratislava"><ObchodnePodmienky /></LocationLayout>} />
         
@@ -218,6 +220,7 @@ function App() {
         } />
 
         <Route path="/malacky/gdpr" element={<LocationLayout location="malacky"><Gdpr /></LocationLayout>} />
+        <Route path="/malacky/fakturacne-udaje" element={<LocationLayout location="malacky"><FakturacneUdaje /></LocationLayout>} />
         <Route path="/malacky/cookies" element={<LocationLayout location="malacky"><Cookies /></LocationLayout>} />
         <Route path="/malacky/obchodne-podmienky" element={<LocationLayout location="malacky"><ObchodnePodmienky /></LocationLayout>} />
 

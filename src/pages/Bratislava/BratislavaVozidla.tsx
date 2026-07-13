@@ -14,6 +14,8 @@ const BratislavaVozidla = () => {
               src="/images/Car_BA_2.JPG" 
               alt="Hyundai i20" 
               className="w-full h-full object-cover"
+              decoding="async"
+              fetchPriority="high"
             />
           </div>
           <div className="flex flex-col justify-center">
@@ -46,27 +48,35 @@ const BratislavaVozidla = () => {
               <img 
                 src="/images/Car_1.JPG" 
                 alt="Hyundai i20" 
+                loading="lazy"
+                decoding="async"
                 className="block w-full h-full object-cover object-[50%_22%] hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
               <img 
                 src="/images/Car_BA_4.JPG" 
                 alt="Hyundai i20" 
-                className="w-full h-64 md:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
+                className="block w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
               <img 
                 src="/images/Car_BA_5.JPG" 
                 alt="Hyundai i20" 
-                className="w-full h-64 md:h-80 lg:h-96 object-cover object-[40%_50%] hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
+                className="block w-full h-full object-cover object-[40%_50%] hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="md:col-span-2 xl:col-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
               <img 
                 src="/images/Car_BA_6.JPG" 
                 alt="Hyundai i20 – žltá" 
+                loading="lazy"
+                decoding="async"
                 className="block w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -75,15 +85,19 @@ const BratislavaVozidla = () => {
                 <img 
                   src="/images/Car_BA_7.JPG" 
                   alt="Hyundai i20 – žltá" 
+                  loading="lazy"
+                  decoding="async"
                   className="block w-full h-full object-cover object-[50%_42%] hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
             <div className="flex justify-end">
-              <div className="w-full md:w-[128%] lg:w-[138%] -ml-[28%] lg:-ml-[38%] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
+              <div className="w-full md:w-[128%] lg:w-[138%] md:-ml-[28%] lg:-ml-[38%] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
                 <img 
                   src="/images/Car_BA_8.JPG" 
                   alt="Hyundai i20 – žltá" 
+                  loading="lazy"
+                  decoding="async"
                   className="block w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -93,15 +107,19 @@ const BratislavaVozidla = () => {
                 <img 
                   src="/images/Car_BA_9.JPG" 
                   alt="Hyundai i20" 
+                  loading="lazy"
+                  decoding="async"
                   className="block w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
             <div className="flex justify-end">
-              <div className="w-full md:w-[128%] lg:w-[138%] -ml-[28%] lg:-ml-[38%] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
+              <div className="w-full md:w-[128%] lg:w-[138%] md:-ml-[28%] lg:-ml-[38%] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
                 <img 
                   src="/images/Car_BA_10.JPG" 
                   alt="Hyundai i20" 
+                  loading="lazy"
+                  decoding="async"
                   className="block w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
                 />
               </div>

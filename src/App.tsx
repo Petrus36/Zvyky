@@ -24,6 +24,7 @@ import MalackyKurzy from './pages/Malacky/MalackyKurzy'
 import KurzBDetail from './pages/Malacky/KurzBDetail'
 import KurzA1Detail from './pages/Malacky/KurzA1Detail'
 import KurzA2Detail from './pages/Malacky/KurzA2Detail'
+import KurzADetail from './pages/Malacky/KurzADetail'
 import MalackyVozidla from './pages/Malacky/MalackyVozidla'
 import MalackyDokumenty from './pages/Malacky/MalackyDokumenty'
 import MalackyKontakt from './pages/Malacky/MalackyKontakt'
@@ -117,7 +118,7 @@ function App() {
           <div className="min-h-screen flex flex-col">
             <BratislavaNavigation />
             <main className="flex-grow">
-              <Registracia location="Bratislava" />
+              <Registracia key="bratislava-registracia" location="Bratislava" />
             </main>
             <Footer />
           </div>
@@ -178,6 +179,16 @@ function App() {
             <Footer />
           </div>
         } />
+
+        <Route path="/malacky/kurzy/a" element={
+          <div className="min-h-screen flex flex-col">
+            <MalackyNavigation />
+            <main className="flex-grow">
+              <KurzADetail />
+            </main>
+            <Footer />
+          </div>
+        } />
         
         <Route path="/malacky/vozidla" element={
           <div className="min-h-screen flex flex-col">
@@ -213,7 +224,7 @@ function App() {
           <div className="min-h-screen flex flex-col">
             <MalackyNavigation />
             <main className="flex-grow">
-              <Registracia location="Malacky" />
+              <Registracia key="malacky-registracia" location="Malacky" />
             </main>
             <Footer />
           </div>

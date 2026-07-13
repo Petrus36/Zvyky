@@ -111,4 +111,8 @@ createServer((req: IncomingMessage, rawRes: ServerResponse) => {
   })
 }).listen(PORT, () => {
   console.log(`✅  Local API → http://localhost:${PORT}/api`)
+  if (!process.env.DATABASE_URL) {
+    console.warn('⚠️  DATABASE_URL is not set — registrations, prices and dates API will fail.')
+    console.warn('   Copy env.example to .env and add your PostgreSQL connection string.')
+  }
 })

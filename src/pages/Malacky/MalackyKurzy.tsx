@@ -8,12 +8,21 @@ const courseLabels: Record<string, string> = {
   B:  'Kurz B',
   A1: 'Kurz A1',
   A2: 'Kurz A2',
+  A:  'Kurz A',
 }
 
 const courseColors: Record<string, string> = {
   B:  '#00AEEF',
   A1: '#116584',
   A2: '#0369a1',
+  A:  '#0c4a6e',
+}
+
+const courseDetailLinks: Record<string, string> = {
+  B:  '/malacky/kurzy/b',
+  A1: '/malacky/kurzy/a1',
+  A2: '/malacky/kurzy/a2',
+  A:  '/malacky/kurzy/a',
 }
 
 const MalackyKurzy = () => {
@@ -51,7 +60,7 @@ const MalackyKurzy = () => {
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold mb-4 font-inter text-gray-800">Osobné vozidlo do 3,5 t.</h3>
                 <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                  Cena nezahŕňa správny poplatok za skúšku (kolok 33€) a poplatok za kurz prvej pomoci
+                  Cena nezahŕňa správny poplatok za skúšku (kolok 50€) a poplatok za kurz prvej pomoci
                 </p>
                 
                 {/* Pricing Section */}
@@ -115,7 +124,7 @@ const MalackyKurzy = () => {
               <h2 className="text-3xl font-extrabold mb-2 font-inter">A1</h2>
               <h3 className="text-sm font-bold mb-3 font-inter">Motocykel s objemom do 125 cm3 a výkonom do 11 kW</h3>
               <p className="text-gray-600 mb-4 text-xs leading-relaxed flex-grow">
-                Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
+                Cena nezahŕňa správny poplatok za skúšku (kolok 25€) a poplatok za kurz prvej pomoci
               </p>
               <div className="flex gap-2 mb-3">
                 <Link
@@ -142,7 +151,7 @@ const MalackyKurzy = () => {
               <h2 className="text-3xl font-extrabold mb-2 font-inter">A2</h2>
               <h3 className="text-sm font-bold mb-3 font-inter">Motocykel s výkonom do 35 kW</h3>
               <p className="text-gray-600 mb-4 text-xs leading-relaxed flex-grow">
-                Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
+                Cena nezahŕňa správny poplatok za skúšku (kolok 25€) a poplatok za kurz prvej pomoci
               </p>
               <div className="flex gap-2 mb-3">
                 <Link
@@ -153,6 +162,34 @@ const MalackyKurzy = () => {
                 </Link>
               </div>
               <div className="text-2xl font-bold text-black">{prices.malacky_A2} €</div>
+            </div>
+          </div>
+
+          {/* A Card */}
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
+            <div className="h-48 bg-gray-300 overflow-hidden relative">
+              <img 
+                src="/images/photo_curseA.jpeg" 
+                alt="A Kurz" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+            </div>
+            <div className="p-6 flex flex-col flex-grow">
+              <h2 className="text-3xl font-extrabold mb-2 font-inter">A</h2>
+              <h3 className="text-sm font-bold mb-3 font-inter">Motocykel bez výkonového obmedzenia (35 kW a viac)</h3>
+              <p className="text-gray-600 mb-4 text-xs leading-relaxed flex-grow">
+                Cena nezahŕňa správny poplatok za skúšku (kolok 25€) a poplatok za kurz prvej pomoci
+              </p>
+              <div className="flex gap-2 mb-3">
+                <Link
+                  to="/malacky/kurzy/a"
+                  className="border-2 border-zvyky-blue text-zvyky-blue hover:bg-zvyky-blue hover:text-white px-3 py-1 rounded-lg transition-all font-semibold uppercase text-xs font-albert inline-block"
+                >
+                  Viac informácií
+                </Link>
+              </div>
+              <div className="text-2xl font-bold text-black">{prices.malacky_A} €</div>
             </div>
           </div>
 
@@ -263,7 +300,7 @@ const MalackyKurzy = () => {
                     {/* CTAs */}
                     <div className="mt-4 flex gap-2">
                       <Link
-                        to={d.courseType === 'B' ? '/malacky/kurzy/b' : d.courseType === 'A1' ? '/malacky/kurzy/a1' : '/malacky/kurzy/a2'}
+                        to={courseDetailLinks[d.courseType] ?? '/malacky/kurzy'}
                         className="flex-1 text-center block text-xs font-semibold uppercase py-2.5 rounded-xl border-2 transition-all hover:text-white"
                         style={{ borderColor: courseColors[d.courseType] ?? '#00AEEF', color: courseColors[d.courseType] ?? '#00AEEF' }}
                         onMouseEnter={e => {

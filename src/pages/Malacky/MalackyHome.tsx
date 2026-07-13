@@ -80,7 +80,7 @@ const MalackyHome = () => {
               <h3 className="text-4xl font-extrabold mb-2 font-inter">A1</h3>
               <h4 className="text-lg font-bold mb-3 font-inter">Motocykel s objemom do 125cm3 a výkonom do 11 kW</h4>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-              Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
+              Cena nezahŕňa správny poplatok za skúšku (kolok 25€) a poplatok za kurz prvej pomoci
               </p>
               <Link
                 to="/malacky/kurzy/a1"
@@ -104,7 +104,7 @@ const MalackyHome = () => {
               <h3 className="text-4xl font-extrabold mb-2 font-inter">B</h3>
               <h4 className="text-lg font-bold mb-3 font-inter">Osobné vozidlo do 3,5 t.</h4>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-              Cena nezahŕňa správny poplatok za skúšku (kolok 33€) a poplatok za kurz prvej pomoci
+              Cena nezahŕňa správny poplatok za skúšku (kolok 50€) a poplatok za kurz prvej pomoci
               </p>
               <Link
                 to="/malacky/kurzy/b"
@@ -128,7 +128,7 @@ const MalackyHome = () => {
               <h3 className="text-4xl font-extrabold mb-2 font-inter">A2</h3>
               <h4 className="text-lg font-bold mb-3 font-inter">Motocykel s výkonom do 35 kW</h4>
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                Cena nezahŕňa správny poplatok za skúšku (kolok 16,50€) a poplatok za kurz prvej pomoci
+                Cena nezahŕňa správny poplatok za skúšku (kolok 25€) a poplatok za kurz prvej pomoci
               </p>
               <Link
                 to="/malacky/kurzy/a2"

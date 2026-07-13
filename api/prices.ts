@@ -8,6 +8,7 @@ const DEFAULT_PRICES: Record<string, number> = {
   malacky_B_student:     1050,
   malacky_A1:             999,
   malacky_A2:             999,
+  malacky_A:              999,
   malacky_kondicne:        45,
   malacky_osobitny:      1555,
   bratislava_B_standard: 1111,

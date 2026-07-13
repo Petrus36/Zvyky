@@ -10,6 +10,7 @@ export interface Prices {
   malacky_B_student:  number
   malacky_A1:         number
   malacky_A2:         number
+  malacky_A:          number
   malacky_kondicne:   number
   malacky_osobitny:   number
   // Bratislava
@@ -25,6 +26,7 @@ export const DEFAULT_PRICES: Prices = {
   malacky_B_student:     1050,
   malacky_A1:             999,
   malacky_A2:             999,
+  malacky_A:              999,
   malacky_kondicne:        45,
   malacky_osobitny:      1555,
   bratislava_B_standard: 1111,
@@ -202,8 +204,8 @@ export const CourseDataProvider = ({ children }: { children: React.ReactNode }) 
       body:    JSON.stringify({ ...r, podpisDna }),
     })
     if (!res.ok) {
-      const body = await res.json().catch(() => ({})) as { error?: string }
-      throw new Error(body.error || 'Registration failed')
+      const body = await res.json().catch(() => ({})) as { error?: string; detail?: string }
+      throw new Error(body.detail ?? body.error ?? 'Registration failed')
     }
   }
 

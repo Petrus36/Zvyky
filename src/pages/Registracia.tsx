@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { useCourseData, type Registration } from '../context/CourseDataContext'
 import { fillZiadostPDF } from '../utils/fillZiadostPDF'
@@ -46,6 +46,7 @@ const COURSE_OPTIONS: Record<'Malacky' | 'Bratislava', { value: string; label: s
     { value: 'B',         label: 'B – Osobné vozidlo do 3,5 t.' },
     { value: 'A1',        label: 'A1 – Motocykel do 125 cm³ / 11 kW' },
     { value: 'A2',        label: 'A2 – Motocykel do 35 kW' },
+    { value: 'A',         label: 'A – Motocykel bez výkonového obmedzenia (35 kW a viac)' },
     { value: 'Kondičné',  label: 'Kondičné jazdy' },
     { value: 'Osobitný',  label: 'Osobitný výcvik' },
   ],
@@ -158,7 +159,9 @@ const Registracia = ({ location }: Props) => {
   const [searchParams] = useSearchParams()
   const { addRegistration } = useCourseData()
 
-  const initialCourse = searchParams.get('kurz') || 'B'
+  const kurzParam = searchParams.get('kurz') || 'B'
+  const allowedCourses = COURSE_OPTIONS[location].map(o => o.value)
+  const initialCourse = allowedCourses.includes(kurzParam) ? kurzParam : 'B'
   const [form, setForm] = useState<FormState>({ ...BLANK, courseType: initialCourse, podpisVMeste: location })
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
@@ -166,6 +169,16 @@ const Registracia = ({ location }: Props) => {
   /** Dátum podpisu pri odoslaní — rovnaký pri opakovanom stiahnutí PDF */
   const [submittedPodpisDna, setSubmittedPodpisDna] = useState<string | null>(null)
   const [errors, setErrors] = useState<Record<string, string>>({})
+
+  useEffect(() => {
+    const allowed = COURSE_OPTIONS[location].map(o => o.value)
+    setForm(prev => {
+      if (allowed.includes(prev.courseType)) return prev
+      const kurz = searchParams.get('kurz') || 'B'
+      const next = allowed.includes(kurz) ? kurz : 'B'
+      return { ...prev, courseType: next, podpisVMeste: location }
+    })
+  }, [location, searchParams])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target
@@ -240,8 +253,9 @@ const Registracia = ({ location }: Props) => {
       setSubmittedPodpisDna(podpisDna)
       setSubmitted(true)
       window.scrollTo({ top: 0, behavior: 'smooth' })
-    } catch {
-      setErrors({ submit: 'Nastala chyba pri odosielaní. Skúste to znova.' })
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Nastala chyba pri odosielaní. Skúste to znova.'
+      setErrors({ submit: msg })
     } finally {
       setSubmitting(false)
     }

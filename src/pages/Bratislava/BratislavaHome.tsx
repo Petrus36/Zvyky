@@ -96,7 +96,7 @@ const BratislavaHome = () => {
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold mb-4 font-inter text-gray-800">Osobné vozidlo do 3,5 t.</h3>
                   <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                    Cena nezahŕňa správny poplatok za skúšku (kolok 33€) a poplatok za kurz prvej pomoci
+                    Cena nezahŕňa správny poplatok za skúšku (kolok 50€) a poplatok za kurz prvej pomoci
                   </p>
                   
                   {/* Pricing Section */}

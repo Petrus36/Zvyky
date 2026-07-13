@@ -6,6 +6,12 @@ const courseColors: Record<string, { bg: string; text: string }> = {
   B:  { bg: '#00AEEF', text: '#fff' },
   A1: { bg: '#116584', text: '#fff' },
   A2: { bg: '#0284c7', text: '#fff' },
+  A:  { bg: '#0c4a6e', text: '#fff' },
+}
+
+const COURSE_TYPES_BY_LOCATION: Record<string, string[]> = {
+  Malacky:    ['B', 'A1', 'A2', 'A'],
+  Bratislava: ['B'],
 }
 
 const emptyForm: Omit<CourseDate, 'id'> = {
@@ -231,7 +237,15 @@ const AdminDates = () => {
                   <label className="block text-xs font-semibold text-gray-600 mb-1.5">Pobočka</label>
                   <select
                     value={form.location}
-                    onChange={e => setForm(f => ({ ...f, location: e.target.value }))}
+                    onChange={e => {
+                      const location = e.target.value
+                      const allowed = COURSE_TYPES_BY_LOCATION[location] ?? ['B']
+                      setForm(f => ({
+                        ...f,
+                        location,
+                        courseType: allowed.includes(f.courseType) ? f.courseType : allowed[0],
+                      }))
+                    }}
                     className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2"
                   >
                     <option value="Malacky">Malacky</option>
@@ -247,9 +261,9 @@ const AdminDates = () => {
                     onChange={e => setForm(f => ({ ...f, courseType: e.target.value }))}
                     className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2"
                   >
-                    <option value="B">B</option>
-                    <option value="A1">A1</option>
-                    <option value="A2">A2</option>
+                    {(COURSE_TYPES_BY_LOCATION[form.location] ?? ['B']).map(type => (
+                      <option key={type} value={type}>{type}</option>
+                    ))}
                   </select>
                 </div>
               </div>

@@ -12,7 +12,7 @@ const KurzBDetail = () => {
           <div className="mb-12 md:mb-16">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 font-inter">Kurz B</h1>
             <p className="text-lg md:text-xl text-gray-700 max-w-4xl leading-relaxed mb-8">
-              Štandardný kurz skupiny B obsahuje teoretickú prípravu, praktické jazdy aj kurz prvej pomoci. Všetko potrebné máš zahrnuté v cene.
+              Štandardný kurz skupiny B obsahuje teoretickú prípravu a praktické jazdy.
             </p>
             
             {/* Key Info Boxes */}
@@ -145,7 +145,7 @@ const KurzBDetail = () => {
           <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl shadow-lg p-6 md:p-8 mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-black mb-4 font-inter">Správny poplatok (kolok)</h3>
             <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-4">
-              Správny poplatok (kolok) nie je zahrnutý v cene kurzu a hradíš ho na konci kurzu. Pre skupinu B je správny poplatok <strong className="text-black">33 €</strong>.
+              Správny poplatok (kolok) nie je zahrnutý v cene kurzu a hradíš ho na konci kurzu. Pre skupinu B je správny poplatok <strong className="text-black">50 €</strong>.
             </p>
             <p className="text-sm text-gray-600">
               * Správny poplatok sa môže meniť podľa aktuálnych predpisov

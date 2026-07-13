@@ -11,7 +11,7 @@ const BratislavaVozidla = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img 
-              src="/images/H_i20_BA.JPG" 
+              src="/images/Car_BA_2.JPG" 
               alt="Hyundai i20" 
               className="w-full h-full object-cover"
             />
@@ -41,27 +41,70 @@ const BratislavaVozidla = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 md:mb-12 font-inter">Galéria vozidiel</h2>
           
           {/* Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+            <div className="md:col-span-2 xl:col-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
+              <img 
+                src="/images/Car_1.JPG" 
+                alt="Hyundai i20" 
+                className="block w-full h-full object-cover object-[50%_22%] hover:scale-105 transition-transform duration-300"
+              />
+            </div>
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img 
-                src="/images/h_i20_ba_2.JPG" 
+                src="/images/Car_BA_4.JPG" 
                 alt="Hyundai i20" 
                 className="w-full h-64 md:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img 
-                src="/images/H_i20_BA.JPG" 
+                src="/images/Car_BA_5.JPG" 
                 alt="Hyundai i20" 
-                className="w-full h-64 md:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-64 md:h-80 lg:h-96 object-cover object-[40%_50%] hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div className="md:col-span-2 xl:col-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
               <img 
-                src="/images/h_i20_ba_3.JPG" 
-                alt="Vozidlo 3" 
-                className="w-full h-64 md:h-80 lg:h-96 object-cover hover:scale-105 transition-transform duration-300"
+                src="/images/Car_BA_6.JPG" 
+                alt="Hyundai i20 – žltá" 
+                className="block w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
               />
+            </div>
+            <div className="md:col-span-2 xl:col-span-2 flex md:justify-start">
+              <div className="w-full md:w-[88%] lg:w-[82%] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
+                <img 
+                  src="/images/Car_BA_7.JPG" 
+                  alt="Hyundai i20 – žltá" 
+                  className="block w-full h-full object-cover object-[50%_42%] hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <div className="w-full md:w-[128%] lg:w-[138%] -ml-[28%] lg:-ml-[38%] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
+                <img 
+                  src="/images/Car_BA_8.JPG" 
+                  alt="Hyundai i20 – žltá" 
+                  className="block w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+            <div className="md:col-span-2 xl:col-span-2 flex md:justify-start">
+              <div className="w-full md:w-[88%] lg:w-[82%] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
+                <img 
+                  src="/images/Car_BA_9.JPG" 
+                  alt="Hyundai i20" 
+                  className="block w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <div className="w-full md:w-[128%] lg:w-[138%] -ml-[28%] lg:-ml-[38%] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
+                <img 
+                  src="/images/Car_BA_10.JPG" 
+                  alt="Hyundai i20" 
+                  className="block w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                />
+              </div>
             </div>
           </div>
         </div>

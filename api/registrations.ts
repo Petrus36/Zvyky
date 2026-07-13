@@ -62,7 +62,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(201).json({ id: registration.id })
     } catch (err) {
       console.error('POST registration error:', err)
-      return res.status(500).json({ error: 'Failed to save registration' })
+      const detail = err instanceof Error ? err.message : String(err)
+      return res.status(500).json({ error: 'Failed to save registration', detail })
     }
   }
 

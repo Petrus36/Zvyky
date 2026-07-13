@@ -8,6 +8,10 @@ const courseColors: Record<string, string> = {
   B: '#00AEEF',
 }
 
+const courseDetailLinks: Record<string, string> = {
+  B: '/bratislava/kurzy/b',
+}
+
 const BratislavaKurzy = () => {
   const { prices, dates } = useCourseData()
 
@@ -43,7 +47,7 @@ const BratislavaKurzy = () => {
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold mb-4 font-inter text-gray-800">Osobné vozidlo do 3,5 t.</h3>
                 <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                  Cena nezahŕňa správny poplatok za skúšku (kolok 33€) a poplatok za kurz prvej pomoci
+                  Cena nezahŕňa správny poplatok za skúšku (kolok 50€) a poplatok za kurz prvej pomoci
                 </p>
 
                 {/* Welcome Price Offer */}
@@ -195,7 +199,7 @@ const BratislavaKurzy = () => {
                     {/* CTAs */}
                     <div className="mt-4 flex gap-2">
                       <Link
-                        to="/bratislava/kurzy/b"
+                        to={courseDetailLinks[d.courseType] ?? '/bratislava/kurzy'}
                         className="flex-1 text-center block text-xs font-semibold uppercase py-2.5 rounded-xl border-2 transition-all hover:text-white"
                         style={{ borderColor: courseColors[d.courseType] ?? '#00AEEF', color: courseColors[d.courseType] ?? '#00AEEF' }}
                         onMouseEnter={e => {

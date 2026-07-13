@@ -134,11 +134,36 @@ const KurzA2Detail = () => {
             </p>
           </div>
 
+          {/* A2 to A Extension */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-black mb-6 font-inter">
+              Rozšírenie z A2 na A (po 2 rokoch praxe)
+            </h3>
+            <div className="space-y-6">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border-l-4 border-zvyky-blue">
+                <h4 className="text-lg md:text-xl font-bold text-black mb-3 font-inter">
+                  Osobitný výcvik (bez skúšky)
+                </h4>
+                <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+                  Odjazdíte si predpísaný počet hodín v autoškole bez stresu zo záverečnej skúšky. Ideálne na prechod na neobmedzený výkon s profesionálnym dohľadom.
+                </p>
+              </div>
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border-l-4 border-zvyky-blue">
+                <h4 className="text-lg md:text-xl font-bold text-black mb-3 font-inter">
+                  Osobitná skúška (bez jázd v autoškole)
+                </h4>
+                <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+                  Nechodíte na výcvik, ale idete priamo na praktickú skúšku z jazdy (testy nerobíte). Vyžaduje si to však dobrú jazdeckú prax a stopercentnú istotu na motorke.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Administrative Fee */}
           <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl shadow-lg p-6 md:p-8 mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-black mb-4 font-inter">Kolok</h3>
             <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-4">
-              Kolok nie je v cene a dopláca sa na konci kurzu. Pre A2 je to <strong className="text-black">16,50 €</strong>.
+              Kolok nie je v cene a dopláca sa na konci kurzu. Pre A2 je to <strong className="text-black">25 €</strong>.
             </p>
             <p className="text-sm text-gray-600">
               * Správny poplatok sa môže meniť podľa aktuálnych predpisov

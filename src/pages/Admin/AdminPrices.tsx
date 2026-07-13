@@ -16,6 +16,7 @@ const MALACKY_FIELDS: PriceField[] = [
   { key: 'malacky_B_student',  label: 'Kurz B',  sublabel: 'Zľava pre študentov', color: '#16a34a', badgeColor: '#16a34a' },
   { key: 'malacky_A1',         label: 'Kurz A1', sublabel: 'Štandardná cena',   color: '#116584', badgeColor: '#116584' },
   { key: 'malacky_A2',         label: 'Kurz A2', sublabel: 'Štandardná cena',   color: '#0369a1', badgeColor: '#0369a1' },
+  { key: 'malacky_A',          label: 'Kurz A',  sublabel: 'Štandardná cena',   color: '#0c4a6e', badgeColor: '#0c4a6e' },
   { key: 'malacky_kondicne',   label: 'Kondičné jazdy', sublabel: 'Cena / 60 min', color: '#7c3aed', badgeColor: '#7c3aed' },
   { key: 'malacky_osobitny',   label: 'Osobitný výcvik', sublabel: 'Štandardná cena', color: '#dc2626', badgeColor: '#dc2626' },
 ]

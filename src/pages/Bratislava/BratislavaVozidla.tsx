@@ -50,7 +50,7 @@ const BratislavaVozidla = () => {
                 alt="Hyundai i20" 
                 loading="lazy"
                 decoding="async"
-                className="block w-full h-full object-cover object-[50%_22%] hover:scale-105 transition-transform duration-300"
+                className="block w-full h-full object-cover object-[50%_22%] md:object-[50%_32%] lg:object-[50%_42%] hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-64 md:h-80 lg:h-96">
